@@ -1,0 +1,30 @@
+# Bro CLI
+.bro/
+!.bro/lint.gd
+!.bro/logger.gd
+godot_bin/
+
+# Godot
+.godot/
+.import/
+export_presets.cfg
+
+# Source files (export to game-ready formats)
+*.blend
+*.blend1
+*.psd
+*.psb
+*.ai
+*.xcf
+*.kra
+*.aseprite
+*.ase
+
+# Dependencies
+node_modules/
+
+# Build
+dist/
+
+# Logs
+*.log

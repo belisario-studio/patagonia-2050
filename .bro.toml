@@ -1,0 +1,14 @@
+[project]
+name = "patagonia-2050"
+
+[godot]
+version = "4.6"
+
+  [godot.download_urls]
+  win32 = "https://github.com/godotengine/godot/releases/download/4.6-stable/Godot_v4.6-stable_win64.exe.zip"
+  darwin = "https://github.com/godotengine/godot/releases/download/4.6-stable/Godot_v4.6-stable_macos.universal.zip"
+  linux = "https://github.com/godotengine/godot/releases/download/4.6-stable/Godot_v4.6-stable_linux.x86_64.zip"
+
+[scripts]
+test_command = ""
+linter_command = "godot --headless --path . --script .bro/lint.gd"
