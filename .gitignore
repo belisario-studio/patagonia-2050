@@ -20,6 +20,9 @@ export_presets.cfg
 *.aseprite
 *.ase
 
+# Assets
+game/assets/GLBs/
+
 # Dependencies
 node_modules/
 
