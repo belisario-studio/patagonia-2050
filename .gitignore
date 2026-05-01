@@ -20,9 +20,6 @@ godot_bin/
 *.aseprite
 *.ase
 
-# Assets
-game/assets/GLBs/
-
 # Dependencies
 node_modules/
 
