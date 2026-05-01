@@ -1,0 +1,265 @@
+[gd_scene format=3 uid="uid://b8qljmt2uvrno"]
+
+[ext_resource type="PackedScene" uid="uid://jv1ycp5de8" path="res://examples/advanced_billboard/magic_balls/magic_ball.tscn" id="1_145le"]
+[ext_resource type="Texture2D" uid="uid://colifr0dcdr4t" path="res://examples/advanced_billboard/magic_balls/magicball_tint.svg" id="2_ll74a"]
+[ext_resource type="Script" uid="uid://bg5veh4rsdedt" path="res://examples/advanced_billboard/magic_balls/basic_cam.gd" id="3_1n4lt"]
+[ext_resource type="Script" uid="uid://cwg5o02ndet5r" path="res://examples/advanced_billboard/magic_balls/dolly.gd" id="4_5vgls"]
+[ext_resource type="PackedScene" uid="uid://dx0e8iqikcryf" path="res://examples/advanced_billboard/magic_balls/welcometothe21stcentury.gltf" id="5_x1tpq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_88oob"]
+friction = 0.25
+bounce = 1.0
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_oajam"]
+
+[sub_resource type="Gradient" id="Gradient_bi6ty"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5vgls"]
+gradient = SubResource("Gradient_bi6ty")
+width = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hgdfr"]
+albedo_texture = SubResource("GradientTexture1D_5vgls")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3lv7h"]
+material = SubResource("StandardMaterial3D_hgdfr")
+size = Vector2(500, 500)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cx1mb"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7htpa"]
+material = SubResource("StandardMaterial3D_cx1mb")
+size = Vector3(25, 25, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yr0lw"]
+size = Vector3(10, 10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1tyx"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pyw1i"]
+material = SubResource("StandardMaterial3D_s1tyx")
+size = Vector3(10, 10, 10)
+
+[sub_resource type="Curve3D" id="Curve3D_x1tpq"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -19.594, 55.2878, 156.828, 0, 0, 0, 0, 0, 0, 147.578, 98.6978, 6.52292, 0, 0, 0, 0, 0, 0, -10.3327, 47.6753, -163.437, 0, 0, 0, 0, 0, 0, -232.361, 33.7329, -3.98572),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+up_vector_enabled = false
+
+[sub_resource type="Environment" id="Environment_5vgls"]
+background_color = Color(0.470076, 0.470076, 0.470076, 1)
+ambient_light_source = 1
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_x1tpq"]
+dof_blur_far_enabled = true
+dof_blur_near_enabled = true
+
+[node name="Root" type="Node3D" unique_id=431427880]
+
+[node name="Black 1" parent="." unique_id=769753669 instance=ExtResource("1_145le")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.81508, 24.1923, -38.4707)
+linear_velocity = Vector3(0.00486625, 3.59178, -0.0114402)
+angular_velocity = Vector3(-0.00461309, 9.12505e-10, -0.00196216)
+
+[node name="Billboard" parent="Black 1" index="0"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+editor_direction_override = false
+
+[node name="Black 2" parent="." unique_id=475381842 instance=ExtResource("1_145le")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.69465, 30.0015, -33.8082)
+linear_velocity = Vector3(4.17453e-07, 3.13675e-05, 1.54859e-06)
+angular_velocity = Vector3(-3.11186e-06, 2.77135e-07, 5.76111e-06)
+
+[node name="Billboard" parent="Black 2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.999997, 0, 0, 0, 0.99999905, 0, 0, 0)
+editor_direction_override = false
+
+[node name="Black 3" parent="." unique_id=616071267 instance=ExtResource("1_145le")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48493, 23.982, -28.6348)
+sleeping = true
+linear_velocity = Vector3(-0.0861222, 7.57128e-05, 0.00136663)
+angular_velocity = Vector3(0.000549598, 0.00844126, 0.0347285)
+
+[node name="Billboard" parent="Black 3" index="0"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.999998, 0, 0, 0, 0.9999989, 0, 0, 0)
+editor_direction_override = false
+
+[node name="Black 4" parent="." unique_id=469788118 instance=ExtResource("1_145le")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2845, 36.481, -38.4707)
+linear_velocity = Vector3(0.00486625, 3.59178, -0.0114402)
+angular_velocity = Vector3(-0.00461309, 9.12505e-10, -0.00196216)
+
+[node name="Billboard" parent="Black 4" index="0"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+editor_direction_override = false
+
+[node name="Black 5" parent="." unique_id=1649255584 instance=ExtResource("1_145le")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.1641, 42.2902, -33.8082)
+linear_velocity = Vector3(4.17453e-07, 3.13675e-05, 1.54859e-06)
+angular_velocity = Vector3(-3.11186e-06, 2.77135e-07, 5.76111e-06)
+
+[node name="Billboard" parent="Black 5" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999998, 0, 0, 0)
+editor_direction_override = false
+
+[node name="Black 6" parent="." unique_id=1048622424 instance=ExtResource("1_145le")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.9544, 36.2707, -28.6348)
+sleeping = true
+linear_velocity = Vector3(-0.0861222, 7.57128e-05, 0.00136663)
+angular_velocity = Vector3(0.000549598, 0.00844126, 0.0347285)
+
+[node name="Billboard" parent="Black 6" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 1, 0, 0, 0)
+editor_direction_override = false
+
+[node name="Blue 1" parent="." unique_id=1013536376 instance=ExtResource("1_145le")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.56057, 36.2641, 0.92263)
+physics_material_override = SubResource("PhysicsMaterial_88oob")
+linear_velocity = Vector3(0, -0.048882, 0)
+angular_velocity = Vector3(5.12628e-19, 0, -8.9487e-12)
+
+[node name="Billboard" parent="Blue 1" index="0"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.9999971, 0, 0, 0, 1, 0, 0, 0)
+texture = ExtResource("2_ll74a")
+direction_textures = Array[Texture2D]([ExtResource("2_ll74a")])
+editor_direction_override = false
+
+[node name="Blue 2" parent="." unique_id=1563847303 instance=ExtResource("1_145le")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.72672, 31.3514, 9.40272)
+physics_material_override = SubResource("PhysicsMaterial_88oob")
+linear_velocity = Vector3(0, -1.18184, 0)
+angular_velocity = Vector3(6.35622e-19, 0, -1.10957e-11)
+
+[node name="Billboard" parent="Blue 2" index="0"]
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+texture = ExtResource("2_ll74a")
+direction_textures = Array[Texture2D]([ExtResource("2_ll74a")])
+editor_direction_override = false
+
+[node name="Blue 3" parent="." unique_id=1670933507 instance=ExtResource("1_145le")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.61631, 39.09, -8.36924)
+physics_material_override = SubResource("PhysicsMaterial_88oob")
+linear_velocity = Vector3(0, 0.113933, 0)
+angular_velocity = Vector3(5.40101e-19, 0, -9.4282e-12)
+
+[node name="Billboard" parent="Blue 3" index="0"]
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+texture = ExtResource("2_ll74a")
+direction_textures = Array[Texture2D]([ExtResource("2_ll74a")])
+editor_direction_override = false
+
+[node name="Cam" type="Camera3D" parent="." unique_id=779653377 node_paths=PackedStringArray("rail_cam")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 23.5904, 6.33915, 0)
+script = ExtResource("3_1n4lt")
+rail_cam = NodePath("../CamRail/Dolly/DollyCam")
+
+[node name="World" type="Node3D" parent="." unique_id=502675071]
+
+[node name="Floor" type="StaticBody3D" parent="World" unique_id=1003131525]
+
+[node name="Collision" type="CollisionShape3D" parent="World/Floor" unique_id=734330141]
+shape = SubResource("WorldBoundaryShape3D_oajam")
+
+[node name="Mesh" type="MeshInstance3D" parent="World/Floor" unique_id=636867304]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+layers = 3
+mesh = SubResource("PlaneMesh_3lv7h")
+
+[node name="Green 1" type="StaticBody3D" parent="World" unique_id=515934091]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.1086, 11.9254, 63.1801)
+
+[node name="Mesh" type="MeshInstance3D" parent="World/Green 1" unique_id=1098668782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5291, 0, 64.0009)
+layers = 3
+mesh = SubResource("BoxMesh_7htpa")
+
+[node name="Collision" type="CollisionShape3D" parent="World/Green 1" unique_id=478367515]
+shape = SubResource("BoxShape3D_yr0lw")
+
+[node name="Green 2" type="StaticBody3D" parent="World" unique_id=2013999145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.2095, 11.9984, -61.2879)
+
+[node name="Mesh" type="MeshInstance3D" parent="World/Green 2" unique_id=532650328]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48201, 0, -53.1555)
+layers = 3
+mesh = SubResource("BoxMesh_7htpa")
+
+[node name="Collision" type="CollisionShape3D" parent="World/Green 2" unique_id=1789668954]
+shape = SubResource("BoxShape3D_yr0lw")
+
+[node name="Cyan 1" type="StaticBody3D" parent="World" unique_id=1956810326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.7451, 4.35122, 41.2229)
+
+[node name="Mesh" type="MeshInstance3D" parent="World/Cyan 1" unique_id=665580374]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 55.4788)
+layers = 3
+mesh = SubResource("BoxMesh_pyw1i")
+
+[node name="Collision" type="CollisionShape3D" parent="World/Cyan 1" unique_id=1374853656]
+shape = SubResource("BoxShape3D_yr0lw")
+
+[node name="Cyan 2" type="StaticBody3D" parent="World" unique_id=60889581]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.3046, 4.35122, -40.7105)
+
+[node name="Mesh" type="MeshInstance3D" parent="World/Cyan 2" unique_id=584514215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40.3307)
+layers = 3
+mesh = SubResource("BoxMesh_pyw1i")
+
+[node name="Collision" type="CollisionShape3D" parent="World/Cyan 2" unique_id=1652174477]
+shape = SubResource("BoxShape3D_yr0lw")
+
+[node name="Cyan 3" type="StaticBody3D" parent="World" unique_id=2056633461]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.2573, 27.8835, -60.232)
+
+[node name="Mesh" type="MeshInstance3D" parent="World/Cyan 3" unique_id=360542085]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.52989, 1.48285, -53.816)
+layers = 3
+mesh = SubResource("BoxMesh_pyw1i")
+
+[node name="Collision" type="CollisionShape3D" parent="World/Cyan 3" unique_id=1758238935]
+shape = SubResource("BoxShape3D_yr0lw")
+
+[node name="welcometothe21stcentury" parent="World" unique_id=1966941893 instance=ExtResource("5_x1tpq")]
+transform = Transform3D(-8.74228e-07, 20, -8.74228e-07, 0, -8.74228e-07, -20, -20, -8.74228e-07, 3.82137e-14, -105.354, 18.6504, 1.56984)
+
+[node name="CamRail" type="Path3D" parent="." unique_id=174754671]
+curve = SubResource("Curve3D_x1tpq")
+
+[node name="Dolly" type="PathFollow3D" parent="CamRail" unique_id=1866718637 node_paths=PackedStringArray("focus")]
+transform = Transform3D(0.99984634, 0, 0, 0, 0.9998358, 0, 0, 0, 0.99984545, -19.594, 55.2878, 156.828)
+rotation_mode = 0
+tilt_enabled = false
+script = ExtResource("4_5vgls")
+loop_per_sec = 0.025
+focus = NodePath("../..")
+
+[node name="DollyCam" type="Camera3D" parent="CamRail/Dolly" unique_id=225063378]
+transform = Transform3D(1.79805, 0.0063551, -0.0109245, -0.00636439, 1.7981, -0.00149899, 0.0109191, 0.00153758, 1.79806, -0.755099, -0.107777, 0.325607)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CamRail/Dolly" unique_id=1100074743]
+shadow_enabled = true
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 8192.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1229994974]
+environment = SubResource("Environment_5vgls")
+camera_attributes = SubResource("CameraAttributesPractical_x1tpq")
+
+[editable path="Black 1"]
+[editable path="Black 2"]
+[editable path="Black 3"]
+[editable path="Black 4"]
+[editable path="Black 5"]
+[editable path="Black 6"]
+[editable path="Blue 1"]
+[editable path="Blue 2"]
+[editable path="Blue 3"]
