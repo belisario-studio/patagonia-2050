@@ -1,0 +1,58 @@
+[gd_scene format=4 uid="uid://2abt8lyqefc"]
+
+[ext_resource type="Texture2D" uid="uid://cxdiygeo3qpgo" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Decals/Wall_Decal_05_Decals_Atlas.webp" id="1_ojowd"]
+[ext_resource type="Texture2D" uid="uid://dscqp3wjdras2" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Decals/Wall_Decal_05_Decals_Normal.webp" id="2_bgoa3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yergm"]
+resource_name = "Wall_Decal_05__sub0__Decals"
+cull_mode = 2
+albedo_texture = ExtResource("1_ojowd")
+roughness = 0.5
+normal_enabled = true
+normal_texture = ExtResource("2_bgoa3")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_edule"]
+_surfaces = [{
+"aabb": AABB(-44.105553, -27.604801, -4.497393e-06, 88.211105, 55.209602, 1e-05),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "Wall_Decal_05__sub0__Decals",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("FmwwwqLW3MFQ6Ja2FmwwQqLW3EFQ6JY2FmwwQqLW3MFQ6Ja2FmwwwqLW3EFQ6JY2")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vj7s5"]
+resource_name = "Wall_Decal_05_Mesh"
+_surfaces = [{
+"aabb": AABB(-44.105553, -27.604801, -4.497393e-06, 88.211105, 55.209602, 1e-05),
+"attribute_data": PackedByteArray("s5yQPqzMPz6a0PI+8PBEPZrQ8j6szD8+s5yQPvDwRD0="),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_yergm"),
+"name": "Wall_Decal_05__sub0__Decals",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("FmwwwqLW3MFQ6Ja2FmwwQqLW3EFQ6JY2FmwwQqLW3MFQ6Ja2FmwwwqLW3EFQ6JY2/3//f////7//f/9/////v/9//3////+//3//f////78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_edule")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vlu7m"]
+data = PackedVector3Array(-44.1056, -27.6048, 0, 44.1056, 27.6048, 0, 44.1056, -27.6048, 0, -44.1056, -27.6048, 0, -44.1056, 27.6048, 0, 44.1056, 27.6048, 0)
+
+[node name="Wall_Decal_052" type="Node3D" unique_id=905928859]
+
+[node name="Wall_Decal_05" type="MeshInstance3D" parent="." unique_id=1862074198]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+mesh = SubResource("ArrayMesh_vj7s5")
+
+[node name="Wall_Decal_05_col" type="StaticBody3D" parent="Wall_Decal_05" unique_id=2067880430]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Decal_05/Wall_Decal_05_col" unique_id=534698731]
+shape = SubResource("ConcavePolygonShape3D_vlu7m")

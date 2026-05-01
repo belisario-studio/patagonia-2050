@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://3xydf21i86cc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8oncg"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_k8kqi"]
+_surfaces = [{
+"aabb": AABB(-33.626312, 0, -33.626312, 67.252625, 1e-05, 67.252625),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_6kgdv"]
+resource_name = "Water_Decal_New_Mesh"
+_surfaces = [{
+"aabb": AABB(-33.626312, 0, -33.626312, 67.252625, 1e-05, 67.252625),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_8oncg"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_k8kqi")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jxsvf"]
+data = PackedVector3Array(-33.6263, 0, 33.6263, 33.6263, 0, -33.6263, 33.6263, 0, 33.6263, -33.6263, 0, 33.6263, -33.6263, 0, -33.6263, 33.6263, 0, -33.6263)
+
+[node name="Water_Decal_New" type="Node3D" unique_id=1449834618]
+
+[node name="Water_Decal" type="MeshInstance3D" parent="." unique_id=172954463]
+transform = Transform3D(0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0)
+mesh = SubResource("ArrayMesh_6kgdv")
+
+[node name="Water_Decal_col" type="StaticBody3D" parent="Water_Decal" unique_id=681028517]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Water_Decal/Water_Decal_col" unique_id=115523361]
+shape = SubResource("ConcavePolygonShape3D_jxsvf")

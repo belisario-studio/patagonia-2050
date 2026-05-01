@@ -1,0 +1,58 @@
+[gd_scene format=4 uid="uid://dih7d13ion7gm"]
+
+[ext_resource type="Texture2D" uid="uid://vlklfsgat0eb" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Container_01_Container.webp" id="1_umypu"]
+[ext_resource type="Texture2D" uid="uid://dvydrbe7arjpe" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Container_01_Container_N.webp" id="2_3hsi5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2q2sg"]
+resource_name = "Container_01__sub0__Container"
+cull_mode = 2
+albedo_texture = ExtResource("1_umypu")
+roughness = 0.5
+normal_enabled = true
+normal_texture = ExtResource("2_3hsi5")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_s3s3s"]
+_surfaces = [{
+"aabb": AABB(-122.90875, 3.0517578e-05, -301.37515, 245.8175, 258.6422, 602.7503),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAACAAMABAACAAEAAwACAAQABQABAAAAAwAFAAAABQAGAAEABAABAAYAAwAHAAUAAwAEAAcABwAGAAUABwAEAAYA"),
+"name": "Container_01__sub0__Container",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("6QL///7/AADpAgAA//8AAAAAAAB6AAAAAAD+/3oAAAAV/QAAAAAAAP////+E/wAA//8AAIT/AAAV/f7/AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rnx2w"]
+resource_name = "Container_01_Mesh"
+_surfaces = [{
+"aabb": AABB(-122.90875, 3.0517578e-05, -301.37515, 245.8175, 258.6422, 602.7503),
+"attribute_data": PackedByteArray("GjnjnYZW452GVnriGjl64ho5euIaOff/dB33/3QdeuJ0HXriBwB64gcA4510HeOddB3jnXQdZoAaOWaAGjnjnY5WYLs0cmC7NHL3/45W9/8aOXridB164nQd450aOeOd"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACAAKAAsADAANAA4ADAAOAA8AEAARABIAEAASABMAFAAVABYAFAAWABcA"),
+"material": SubResource("StandardMaterial3D_2q2sg"),
+"name": "Container_01__sub0__Container",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("6QL///7/ONXpAgAA//841QAAAAB6ADjVAAD+/3oAONUAAP7/egDO/wAAAAB6AM7/Ff0AAAAAzv8V/f7/AADO/xX9/v8AAHDVFf0AAAAAcNX//wAAhP9w1f////+E/3DV/////4T//////wAAhP///+kCAAD/////6QL///7///8V/QAAAADc/wAAAAB6ANz/6QIAAP//3P///wAAhP/c/wAA/v96ANz/Ff3+/wAA3P//////hP/c/+kC///+/9z/ZlWYqmZVmKpmVZiqZlWYqv9/////f////3////9///+7Krsquyq7Krsquyq7KrsqTID/f0yA/39MgP9/TID/f+w/2f/sP9n/7D/Z/+w/2f8lgOy/JYDsvyWA7L8lgOy/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_s3s3s")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ja54x"]
+data = PackedVector3Array(-120.114296, 258.64218, 301.3659, -120.114296, 0, 301.37518, -122.9088, 0, -300.25308, -120.114296, 258.64218, 301.3659, -122.9088, 0, -300.25308, -122.9088, 258.6383, -300.25308, -122.9088, 258.6383, -300.25308, -122.9088, 0, -300.25308, 120.110596, 0, -301.37518, -122.9088, 258.6383, -300.25308, 120.110596, 0, -301.37518, 120.110596, 258.6383, -301.37518, 120.110596, 258.6383, -301.37518, 120.110596, 0, -301.37518, 122.9088, 0, 300.2439, 120.110596, 258.6383, -301.37518, 122.9088, 0, 300.2439, 122.9088, 258.64218, 300.2439, 122.9088, 258.64218, 300.2439, 122.9088, 0, 300.2439, -120.114296, 0, 301.37518, 122.9088, 258.64218, 300.2439, -120.114296, 0, 301.37518, -120.114296, 258.64218, 301.3659, 120.110596, 0, -301.37518, -122.9088, 0, -300.25308, -120.114296, 0, 301.37518, 120.110596, 0, -301.37518, -120.114296, 0, 301.37518, 122.9088, 0, 300.2439, -122.9088, 258.6383, -300.25308, 120.110596, 258.6383, -301.37518, 122.9088, 258.64218, 300.2439, -122.9088, 258.6383, -300.25308, 122.9088, 258.64218, 300.2439, -120.114296, 258.64218, 301.3659)
+
+[node name="Container_012" type="Node3D" unique_id=1270643085]
+
+[node name="Container_01" type="MeshInstance3D" parent="." unique_id=133384826]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+mesh = SubResource("ArrayMesh_rnx2w")
+
+[node name="Container_01_col" type="StaticBody3D" parent="Container_01" unique_id=166362799]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Container_01/Container_01_col" unique_id=1657458538]
+shape = SubResource("ConcavePolygonShape3D_ja54x")

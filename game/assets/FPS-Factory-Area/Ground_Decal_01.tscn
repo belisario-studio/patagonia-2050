@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://n3hcqx8kw678"]
+
+[ext_resource type="Texture2D" uid="uid://blkryvvuivqtj" path="res://assets/GLBs/FPS_Factory_Area/Models/Decals/Ground_Decal_01_Decals_Atlas.webp" id="1_2kwd6"]
+[ext_resource type="Texture2D" uid="uid://bbniwyff60ph2" path="res://assets/GLBs/FPS_Factory_Area/Models/Decals/Ground_Decal_01_Decals_Normal.webp" id="2_8s7v1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k8nkg"]
+resource_name = "Ground_Decal_01__Material #219"
+cull_mode = 2
+albedo_texture = ExtResource("1_2kwd6")
+roughness = 0.5
+normal_enabled = true
+normal_texture = ExtResource("2_8s7v1")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_mhpma"]
+_surfaces = [{
+"aabb": AABB(-112.225105, 0, -112.71983, 224.45021, 1e-05, 225.43967),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "Ground_Decal_01__Material #219",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_r70o0"]
+resource_name = "Ground_Decal_01_Mesh"
+_surfaces = [{
+"aabb": AABB(-112.225105, 0, -112.71983, 224.45021, 1e-05, 225.43967),
+"attribute_data": PackedByteArray(92, 9, 194, 182, 53, 55, 231, 135, 53, 55, 194, 182, 92, 9, 231, 135),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_k8nkg"),
+"name": "Ground_Decal_01__Material #219",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_mhpma")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_pmb8q"]
+data = PackedVector3Array(-112.2251, 0, 112.719795, 112.2251, 0, -112.719795, 112.2251, 0, 112.719795, -112.2251, 0, 112.719795, -112.2251, 0, -112.719795, 112.2251, 0, -112.719795)
+
+[node name="Ground_Decal_012" type="Node3D" unique_id=1804132368]
+
+[node name="Ground_Decal_01" type="MeshInstance3D" parent="." unique_id=1694881285]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+mesh = SubResource("ArrayMesh_r70o0")
+
+[node name="Ground_Decal_01_col" type="StaticBody3D" parent="Ground_Decal_01" unique_id=1470969209]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground_Decal_01/Ground_Decal_01_col" unique_id=489520981]
+shape = SubResource("ConcavePolygonShape3D_pmb8q")
