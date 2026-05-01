@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://5cwelti4wdk4"]
+
+[ext_resource type="Texture2D" uid="uid://cujiaaji05ts5" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Decals/Water_Decal_Water.webp" id="1_or8hr"]
+[ext_resource type="Texture2D" uid="uid://n4wpxd8l5utv" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Decals/Water_Decal_WaterN.webp" id="2_aacrw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxwxx"]
+resource_name = "Water_Decal__sub0__Water"
+cull_mode = 2
+albedo_texture = ExtResource("1_or8hr")
+roughness = 0.5
+normal_enabled = true
+normal_texture = ExtResource("2_aacrw")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xcjwy"]
+_surfaces = [{
+"aabb": AABB(-112.225105, 0, -112.71983, 224.45021, 1e-05, 225.43967),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "Water_Decal__sub0__Water",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_w3d1k"]
+resource_name = "Water_Decal_Mesh"
+_surfaces = [{
+"aabb": AABB(-112.225105, 0, -112.71983, 224.45021, 1e-05, 225.43967),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_pxwxx"),
+"name": "Water_Decal__sub0__Water",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_xcjwy")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_c0yer"]
+data = PackedVector3Array(-112.2251, 0, 112.719795, 112.2251, 0, -112.719795, 112.2251, 0, 112.719795, -112.2251, 0, 112.719795, -112.2251, 0, -112.719795, 112.2251, 0, -112.719795)
+
+[node name="Water_Decal2" type="Node3D" unique_id=103925379]
+
+[node name="Water_Decal" type="MeshInstance3D" parent="." unique_id=15802558]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+mesh = SubResource("ArrayMesh_w3d1k")
+
+[node name="Water_Decal_col" type="StaticBody3D" parent="Water_Decal" unique_id=735145971]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Water_Decal/Water_Decal_col" unique_id=1823959338]
+shape = SubResource("ConcavePolygonShape3D_c0yer")

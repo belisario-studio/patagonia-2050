@@ -7,7 +7,7 @@ godot_bin/
 # Godot
 .godot/
 .import/
-export_presets.cfg
+# export_presets.cfg
 
 # Source files (export to game-ready formats)
 *.blend
@@ -19,6 +19,9 @@ export_presets.cfg
 *.kra
 *.aseprite
 *.ase
+
+# Assets
+game/assets/GLBs/
 
 # Dependencies
 node_modules/

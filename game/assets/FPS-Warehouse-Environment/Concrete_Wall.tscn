@@ -1,0 +1,55 @@
+[gd_scene format=4 uid="uid://ts2pqripbxbi"]
+
+[ext_resource type="Texture2D" uid="uid://bp8o61m0n761t" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Concrete_Wall_ConcreteWall.webp" id="1_w5wdq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bc55m"]
+resource_name = "Concrete_Wall__sub0__ConcreteWall"
+cull_mode = 2
+albedo_texture = ExtResource("1_w5wdq")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_wql6j"]
+_surfaces = [{
+"aabb": AABB(-299.56952, 0, -14.9784775, 599.13904, 239.65562, 29.956947),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQAAwAEAAEABQAAAAIABQADAAAAAgAEAAYABQACAAYAAwAHAAQABQAHAAMABgAEAAcABgAHAAUA"),
+"name": "Concrete_Wall__sub0__ConcreteWall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP//AAAAAP////8AAP///////wAAAAAAAP//AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ch7rf"]
+resource_name = "Concrete_Wall_Mesh"
+_surfaces = [{
+"aabb": AABB(-299.56952, 0, -14.9784775, 599.13904, 239.65562, 29.956947),
+"attribute_data": PackedByteArray("///9/1RV/3////9/VFX9/2Wm///urv1/7q7//2Wm/X////9/VFX9/////f9UVf9/7q7//2Wm/X9lpv//7q79f+6u/f9lpv9/7q7/f2Wm/f9lpv3/7q7/f2Wm/3/urv3/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_bc55m"),
+"name": "Concrete_Wall__sub0__ConcreteWall",
+"primitive": 3,
+"uv_scale": Vector4(3, 2.000112, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("//8AAP//AIAAAP////8AgP///////wCAAAAAAP//AID///////9U1QAA//8AAFTV/////wAAVNUAAP////9U1f////8AAAAAAAAAAAAAAAD//wAAAAAAAAAA//8AAAAA//8AAAAAqioAAAAA//+qKv//AAD//6oqAAAAAAAAqir//wAAAAD/v/////////+//////wAA/7///wAA////vwAAAAD//wAAAAD//wAAAAAAAP////8AAAAAAAAAAAAA/3////9/////f////3///1TVqipU1aoqVNWqKlTVqir///9/////f////3////9/VFVUVVRVVFVUVVRVVFVUVf9/AAD/fwAA/38AAP9/AAD/P/9//z//f/8//3//P/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_wql6j")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_iq7g4"]
+data = PackedVector3Array(299.5695, 0, 14.978499, -299.5695, 239.6556, 14.978499, 299.5695, 239.6556, 14.978499, 299.5695, 0, 14.978499, -299.5695, 0, 14.978499, -299.5695, 239.6556, 14.978499, 299.5695, 239.6556, 14.978499, -299.5695, 239.6556, -14.978499, 299.5695, 239.6556, -14.978499, 299.5695, 239.6556, 14.978499, -299.5695, 239.6556, 14.978499, -299.5695, 239.6556, -14.978499, 299.5695, 239.6556, -14.978499, -299.5695, 0, -14.978499, 299.5695, 0, -14.978499, 299.5695, 239.6556, -14.978499, -299.5695, 239.6556, -14.978499, -299.5695, 0, -14.978499, 299.5695, 0, -14.978499, -299.5695, 0, 14.978499, 299.5695, 0, 14.978499, 299.5695, 0, -14.978499, -299.5695, 0, -14.978499, -299.5695, 0, 14.978499, 299.5695, 0, -14.978499, 299.5695, 239.6556, 14.978499, 299.5695, 239.6556, -14.978499, 299.5695, 0, -14.978499, 299.5695, 0, 14.978499, 299.5695, 239.6556, 14.978499, -299.5695, 0, 14.978499, -299.5695, 239.6556, -14.978499, -299.5695, 239.6556, 14.978499, -299.5695, 0, 14.978499, -299.5695, 0, -14.978499, -299.5695, 239.6556, -14.978499)
+
+[node name="Concrete_Wall2" type="Node3D" unique_id=1081250815]
+
+[node name="Concrete_Wall" type="MeshInstance3D" parent="." unique_id=1214860222]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+mesh = SubResource("ArrayMesh_ch7rf")
+
+[node name="Concrete_Wall_col" type="StaticBody3D" parent="Concrete_Wall" unique_id=2060007874]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Concrete_Wall/Concrete_Wall_col" unique_id=558619655]
+shape = SubResource("ConcavePolygonShape3D_iq7g4")
