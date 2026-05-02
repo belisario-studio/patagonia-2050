@@ -179,8 +179,8 @@ func _process(_delta: float) -> void:
 func get_target_node() -> Node3D:
 	if Engine.is_editor_hint() and editor_direction_override:
 		if editor_point_to_camera_viewport_idx >= 0:
-			return EditorInterface.get_editor_viewport_3d(editor_point_to_camera_viewport_idx
-															).get_camera_3d()
+			var editor_interface = Engine.get_singleton("EditorInterface")
+			return editor_interface.get_editor_viewport_3d(editor_point_to_camera_viewport_idx).get_camera_3d()
 		return editor_point_target if editor_point_target != null else get_viewport().get_camera_3d()
 	if point_target != null:
 		return point_target
