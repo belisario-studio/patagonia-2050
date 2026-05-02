@@ -95,4 +95,5 @@ func _load_material(path:String) -> void:
 	%SpatialShaderTypeCaches.add_child(material_shower)
 
 func _ready() -> void:
+	$Control.theme = preload("res://resources/themes/ui_theme.tres")
 	SceneLoader._background_loading = true

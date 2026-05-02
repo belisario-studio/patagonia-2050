@@ -1,6 +1,9 @@
 class_name Enemy
 extends CharacterBody3D
 
+const HIT_SOUND := preload("res://assets/audio/Impacto_Enemigo.mp3")
+const DESTROY_SOUND := preload("res://assets/audio/Destruccion_Robot.mp3")
+
 @export var max_health: int = 100
 @export var move_speed: float = 3.0
 
@@ -33,8 +36,16 @@ func _physics_process(_delta: float) -> void:
 
 func Hit_Successful(damage: int, _direction: Vector3 = Vector3.ZERO, _position: Vector3 = Vector3.ZERO) -> void:
 	_health -= damage
+	
+	var sound_position := _position
+	if sound_position == Vector3.ZERO:
+		sound_position = global_position
+	_spawn_sound(HIT_SOUND, sound_position)
+	
 	if _health > 0:
 		return
+	
+	_spawn_sound(DESTROY_SOUND, global_position)
 	queue_free()
 
 
@@ -43,6 +54,15 @@ func _on_body_entered(body: Node3D) -> void:
 		return
 	_player_ref = body
 
+
+func _spawn_sound(stream: AudioStream, position: Vector3) -> void:
+	var player := AudioStreamPlayer3D.new()
+	player.stream = stream
+	player.bus = "SFX"
+	player.global_position = position
+	player.finished.connect(player.queue_free)
+	get_tree().current_scene.add_child(player)
+	player.play()
 
 func _on_body_exited(body: Node3D) -> void:
 	if body != _player_ref:

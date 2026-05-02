@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="WeaponResource" format=3 uid="uid://c8wargona01"]
+
+[ext_resource type="Script" uid="uid://ca7h24lxxrtvx" path="res://assets/FPS-Template/Player_Controller/scripts/Weapon_State_Machine/weapon_resource.gd" id="1_res"]
+[ext_resource type="PackedScene" uid="uid://c8wplasma02" path="res://scenes/guns/plasma_torus_proyectile.tscn" id="2_proj"]
+
+[resource]
+script = ExtResource("1_res")
+weapon_name = "Argonauta"
+pick_up_animation = "Argonauta_Active"
+shoot_animation = "Argonauta_Shoot"
+reload_animation = "Argonauta_Reload"
+change_animation = "Argonauta_Deactivate"
+drop_animation = "Argonauta_Drop"
+out_of_ammo_animation = "Argonauta_OOA"
+melee_animation = "Argonauta_Melee"
+has_ammo = false
+magazine = 0
+max_ammo = 0
+damage = 35
+melee_damage = 2.0
+auto_fire = false
+fire_range = 100
+can_be_dropped = false
+projectile_to_load = ExtResource("2_proj")

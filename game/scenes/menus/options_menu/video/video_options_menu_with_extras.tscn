@@ -2,8 +2,10 @@
 
 [ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/nodes/menus/options_menu/video/video_options_menu.tscn" id="1_n1b6r"]
 [ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/nodes/menus/options_menu/option_control/list_option_control.tscn" id="2_r8snp"]
+[ext_resource type="Theme" path="res://resources/themes/ui_theme.tres" id="3_ui_theme"]
 
 [node name="Video" unique_id=2066056515 instance=ExtResource("1_n1b6r")]
+theme = ExtResource("3_ui_theme")
 
 [node name="AntiAliasingControl" parent="VBoxContainer" parent_id_path=PackedInt32Array(1251699420) index="3" unique_id=1035813408 instance=ExtResource("2_r8snp")]
 layout_mode = 2

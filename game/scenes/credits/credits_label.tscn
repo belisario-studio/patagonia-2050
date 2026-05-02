@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://1n5o13wmebk2"]
 
 [ext_resource type="Script" path="res://addons/maaacks_game_template/base/nodes/labels/credits_label.gd" id="1_yhcaj"]
+[ext_resource type="FontFile" uid="uid://2q0efm6d8fb6" path="res://assets/Fonts/Turret_Road/TurretRoad-Regular.ttf" id="2_turret"]
+[ext_resource type="FontFile" uid="uid://cuhjgvsmpadas" path="res://assets/Fonts/Turret_Road/TurretRoad-Bold.ttf" id="3_turret_bold"]
+[ext_resource type="FontFile" uid="uid://b65eaud5rpsmo" path="res://assets/Fonts/Megrim/Megrim-Regular.ttf" id="4_megrim"]
 
 [node name="CreditsLabel" type="RichTextLabel" unique_id=525943618]
+theme_override_fonts/normal_font = ExtResource("2_turret")
+theme_override_fonts/bold_font = ExtResource("3_turret_bold")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

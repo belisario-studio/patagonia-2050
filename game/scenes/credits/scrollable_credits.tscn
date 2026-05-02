@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" path="res://scenes/credits/scrollable_credits.gd" id="1_jnbjt"]
 [ext_resource type="PackedScene" path="res://scenes/credits/credits_label.tscn" id="2_35kdw"]
+[ext_resource type="Theme" uid="uid://cohpidj0cocro" path="res://resources/themes/ui_theme.tres" id="3_ui_theme"]
 
 [node name="ScrollableCredits" type="Control" unique_id=1649718614]
+theme = ExtResource("3_ui_theme")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

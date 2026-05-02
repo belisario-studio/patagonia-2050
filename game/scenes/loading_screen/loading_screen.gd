@@ -7,6 +7,7 @@ func _ready() -> void:
 
 func _apply_visual_styles() -> void:
 	var control := $Control
+	control.theme = preload("res://resources/themes/ui_theme.tres")
 
 	var back_panel := control.get_node_or_null("BackPanel")
 	if back_panel:
@@ -19,20 +20,9 @@ func _apply_visual_styles() -> void:
 	control.move_child(bg, 0)
 
 	var bar: ProgressBar = %ProgressBar
-	var bar_bg := StyleBoxFlat.new()
-	bar_bg.bg_color = Color(0.08, 0.08, 0.12, 1.0)
-	bar_bg.set_corner_radius_all(2)
-	bar.add_theme_stylebox_override("background", bar_bg)
-
-	var bar_fill := StyleBoxFlat.new()
-	bar_fill.bg_color = Color(0.0, 0.85, 1.0, 1.0)
-	bar_fill.set_corner_radius_all(2)
-	bar.add_theme_stylebox_override("fill", bar_fill)
-
 	bar.add_theme_constant_override("outline_size", 0)
 
 	var label: Label = %ProgressLabel
-	label.add_theme_color_override("font_color", Color(0.0, 0.85, 1.0, 1.0))
 	label.add_theme_font_size_override("font_size", 24)
 
 	var robot := TextureRect.new()

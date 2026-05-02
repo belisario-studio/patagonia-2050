@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" path="res://scenes/menus/options_menu/audio/audio_options_menu.tscn" id="4_6wkjv"]
 [ext_resource type="PackedScene" path="res://scenes/menus/options_menu/video/video_options_menu_with_extras.tscn" id="5_kr6xa"]
 [ext_resource type="PackedScene" path="res://scenes/menus/options_menu/game/game_options_menu.tscn" id="6_n2uhm"]
+[ext_resource type="Theme" path="res://resources/themes/ui_theme.tres" id="7_ui_theme"]
 
 [node name="MasterOptionsMenu" type="TabContainer" unique_id=1111795112]
+theme = ExtResource("7_ui_theme")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

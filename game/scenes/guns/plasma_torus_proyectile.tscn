@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c8wplasma02"]
+
+[ext_resource type="Script" uid="uid://b26eegme16mfw" path="res://assets/FPS-Template/Player_Controller/scripts/Projectiles/Projectile.gd" id="1_proj"]
+[ext_resource type="PackedScene" uid="uid://c8wplasma01" path="res://scenes/guns/plasma_torus_bullet.tscn" id="2_bullet"]
+
+[node name="Projectile" type="Node3D"]
+script = ExtResource("1_proj")
+Projectile_Type = "Rigidbody_Projectile"
+Projectile_Velocity = 75
+Rigid_Body_Projectile = ExtResource("2_bullet")

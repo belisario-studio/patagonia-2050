@@ -13,7 +13,7 @@ signal Hit_Successfull
 @export var Rigid_Body_Projectile: PackedScene
 @export var pass_through: bool = false
 
-@onready var Debug_Bullet = preload("res://assets/FPS-Template/Player_Controller/Spawnable_Objects/hit_debug.tscn")
+@onready var Debug_Bullet = preload("res://assets/FPS-Template/Player_Controller/Spawnable_Objects/hit_burn_decal.tscn")
 
 var damage: float = 0
 var Projectiles_Spawned = []
@@ -104,7 +104,13 @@ func Load_Decal(_pos, _normal):
 	var rd = Debug_Bullet.instantiate()
 	var world = get_tree().get_root()
 	world.add_child(rd)
-	rd.global_translate(_pos + (_normal * .01))
+	rd.global_position = _pos + (_normal * 0.01)
+	var y = _normal
+	var x = y.cross(Vector3.UP).normalized()
+	if x.is_zero_approx():
+		x = Vector3.RIGHT
+	var z = x.cross(y)
+	rd.global_basis = Basis(x, y, z)
 		
 func Launch_Rigid_Body_Projectile(Collision_Data, _projectile, _origin_point):
 	var _Point = Collision_Data[1]

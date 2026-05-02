@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://burn_decal_temp"]
+
+[ext_resource type="Script" path="res://assets/FPS-Template/Player_Controller/scripts/Weapon_State_Machine/hit_burn_decal.gd" id="1_burn"]
+[ext_resource type="Texture2D" path="res://assets/burn.png" id="2_burn_tex"]
+
+[node name="HitBurnDecal" type="Decal"]
+size = Vector3(0.35, 0.35, 0.35)
+texture_albedo = ExtResource("2_burn_tex")
+upper_fade = 0.05
+lower_fade = 0.05
+cull_mask = 1048575
+script = ExtResource("1_burn")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+autostart = true

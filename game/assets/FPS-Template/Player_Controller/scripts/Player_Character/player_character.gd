@@ -1,5 +1,12 @@
 extends CharacterBody3D
 
+const FOOTSTEP_SOUNDS := [
+	preload("res://assets/audio/paso1.mp3"),
+	preload("res://assets/audio/paso2.mp3"),
+	preload("res://assets/audio/paso3.mp3"),
+]
+const FOOTSTEP_INTERVAL := 0.45
+
 @onready var camera = %Camera
 @export var subviewport_camera: Camera3D
 @export var main_camera:Camera3D
@@ -43,6 +50,9 @@ const NORMAL_speed = 1
 @export_range(0.1,1.0) var walk_speed: float = 0.5
 var speed_modifier: float = NORMAL_speed
 
+@onready var _footstep_player := AudioStreamPlayer3D.new()
+var _footstep_timer: float = 0.0
+
 @export_category("Jump Parameters")
 @export var coyote_timer: Timer
 @export var jump_peak_time: float = .5
@@ -65,6 +75,8 @@ func _ready() -> void:
 	update_camera_rotation()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	calculate_movement_parameters()
+	_footstep_player.bus = "SFX"
+	add_child(_footstep_player)
 	
 func update_camera_rotation() -> void:
 	var current_rotation = get_rotation()
@@ -249,6 +261,27 @@ func _physics_process(_delta: float) -> void:
 	velocity.z = move_toward(velocity.z, direction.z * _speed, _acceleration*_delta)
 	
 	move_and_slide()
+	_handle_footsteps(_delta)
+
+func _handle_footsteps(delta: float) -> void:
+	if not is_on_floor():
+		_footstep_timer = 0.0
+		return
+	
+	var horizontal_speed := Vector2(velocity.x, velocity.z).length()
+	if horizontal_speed < 0.1:
+		_footstep_timer = 0.0
+		return
+	
+	_footstep_timer -= delta
+	if _footstep_timer > 0.0:
+		return
+	
+	_footstep_player.stream = FOOTSTEP_SOUNDS[randi() % FOOTSTEP_SOUNDS.size()]
+	_footstep_player.play()
+	
+	var multiplier := speed_modifier if speed_modifier > 0.0 else 1.0
+	_footstep_timer = FOOTSTEP_INTERVAL / multiplier
 
 func jump()->void:
 	velocity.y = jump_velocity

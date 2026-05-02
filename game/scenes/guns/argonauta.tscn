@@ -204,10 +204,15 @@ radius = 0.08105469
 height = 0.20222473
 material = SubResource("StandardMaterial3D_eobq3")
 
-[node name="plasma" type="CSGTorus3D" parent="." unique_id=1369793073]
+[node name="plasma_torus_proyectile" type="CSGTorus3D" parent="." unique_id=1369793073]
 transform = Transform3D(0.04851856, 0.99882233, 0, -0.99882233, 0.04851856, 0, 0, 0, 1, 0.05017805, -0.009527206, 0.12280017)
+visible = false
 material_override = ExtResource("9_ntxnn")
 transparency = 0.57
 cast_shadow = 0
 inner_radius = 0.22004893
 outer_radius = 0.25146207
+
+[node name="ProjectileSpawn" type="Marker3D" parent="." unique_id=1369793074]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05017805, -0.009527206, 0.12280017)
+gizmo_extents = 0.1

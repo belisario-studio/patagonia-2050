@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" path="res://scenes/loading_screen/level_loading_screen.tscn" id="10_0v86b"]
 [ext_resource type="Script" path="res://scenes/game_scene/configurable_sub_viewport.gd" id="11_ulq3g"]
 [ext_resource type="Script" path="res://scenes/game_scene/game_timer.gd" id="12_gpor5"]
+[ext_resource type="AudioStream" path="res://assets/audio/Metal2_Shooter_Combat_loop_120bpm_MP3.mp3" id="13_ab12"]
 
 [node name="GameUI" type="Control" unique_id=1609552811]
 layout_mode = 3
@@ -27,6 +28,7 @@ pause_menu_packed = ExtResource("2_7aihr")
 focused_viewport = NodePath("../ViewportContainer/ConfigurableSubViewport")
 
 [node name="BackgroundMusicPlayer" parent="." unique_id=986713811 instance=ExtResource("3_3re04")]
+stream = ExtResource("13_ab12")
 
 [node name="LevelLoader" type="Node" parent="." unique_id=1047451806 node_paths=PackedStringArray("level_container", "level_loading_screen")]
 script = ExtResource("4_ascoc")

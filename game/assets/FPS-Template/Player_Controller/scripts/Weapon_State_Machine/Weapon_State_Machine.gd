@@ -12,7 +12,6 @@ signal connect_weapon_to_hud
 @export var melee_hitbox: ShapeCast3D
 @export var max_weapons: int
 @onready var bullet_point = get_node("%BulletPoint")
-@onready var debug_bullet = preload("res://assets/FPS-Template/Player_Controller/Spawnable_Objects/hit_debug.tscn")
 
 var next_weapon: WeaponSlot
 
@@ -21,6 +20,12 @@ var spray_profiles: Dictionary = {}
 var _count = 0
 var shot_tween
 @export var weapon_stack:Array[WeaponSlot] #An Array of weapons currently in possesion by the player
+
+const SHOOT_SOUNDS := [
+	preload("res://assets/audio/Laser01.mp3"),
+	preload("res://assets/audio/Laser02.mp3"),
+	preload("res://assets/audio/Laser03.mp3"),
+]
 var current_weapon_slot: WeaponSlot = null
 
 func _ready() -> void:
@@ -32,8 +37,10 @@ func _ready() -> void:
 			initialize(i) #current starts on the first weapon in the stack
 		current_weapon_slot = weapon_stack[0]
 		if check_valid_weapon_slot():
+			_ensure_weapon_animations(current_weapon_slot.weapon)
 			enter()
 			update_weapon_stack.emit(weapon_stack)
+		
 		
 func _unhandled_key_input(event: InputEvent) -> void:
 	if not event.is_pressed():
@@ -94,20 +101,70 @@ func initialize(_weapon_slot: WeaponSlot):
 		spray_profiles[_weapon_slot.weapon.weapon_name] = _weapon_slot.weapon.weapon_spray.instantiate()
 	connect_weapon_to_hud.emit(_weapon_slot.weapon)
 
+func _ensure_weapon_animations(weapon: WeaponResource) -> void:
+	var anim_names: Array[String] = [
+		weapon.pick_up_animation,
+		weapon.shoot_animation,
+		weapon.reload_animation,
+		weapon.change_animation,
+		weapon.drop_animation,
+		weapon.out_of_ammo_animation,
+		weapon.melee_animation,
+	]
+	for anim_path in anim_names:
+		if anim_path.is_empty():
+			continue
+		_ensure_animation_exists(anim_path)
+
+func _ensure_animation_exists(anim_path: String) -> void:
+	var parts := anim_path.split("/")
+	if parts.size() == 2:
+		var lib_name := parts[0]
+		var anim_name := parts[1]
+		var lib := animation_player.get_animation_library(lib_name)
+		if lib == null:
+			lib = AnimationLibrary.new()
+			animation_player.add_animation_library(lib_name, lib)
+		if not lib.has_animation(anim_name):
+			var anim := Animation.new()
+			anim.length = 0.05
+			lib.add_animation(anim_name, anim)
+	else:
+		var lib := animation_player.get_animation_library("")
+		if lib == null:
+			return
+		if not lib.has_animation(anim_path):
+			var anim := Animation.new()
+			anim.length = 0.05
+			lib.add_animation(anim_path, anim)
+
+func _play_animation_if_exists(anim_name: String) -> void:
+	if anim_name.is_empty():
+		return
+	if animation_player.has_animation(anim_name):
+		animation_player.play(anim_name)
+
+func _queue_animation_if_exists(anim_name: String) -> void:
+	if anim_name.is_empty():
+		return
+	if animation_player.has_animation(anim_name):
+		animation_player.queue(anim_name)
+
 func enter() -> void:
-	animation_player.queue(current_weapon_slot.weapon.pick_up_animation)
+	_queue_animation_if_exists(current_weapon_slot.weapon.pick_up_animation)
 	weapon_changed.emit(current_weapon_slot.weapon.weapon_name)
 	update_ammo.emit([current_weapon_slot.current_ammo, current_weapon_slot.reserve_ammo])
 
 func exit(_next_weapon: WeaponSlot) -> void:
 	if _next_weapon != current_weapon_slot:
 		if animation_player.get_current_animation() != current_weapon_slot.weapon.change_animation:
-			animation_player.queue(current_weapon_slot.weapon.change_animation)
+			_queue_animation_if_exists(current_weapon_slot.weapon.change_animation)
 			next_weapon = _next_weapon
 
 func change_weapon(weapon_slot: WeaponSlot) -> void:
 	current_weapon_slot = weapon_slot
 	next_weapon = null
+	_ensure_weapon_animations(current_weapon_slot.weapon)
 	enter()
 	
 func shot_count_update() -> void:
@@ -119,45 +176,67 @@ func shoot() -> void:
 		if current_weapon_slot.weapon.incremental_reload and animation_player.current_animation == current_weapon_slot.weapon.reload_animation:
 			animation_player.stop()
 			
-		if not animation_player.is_playing():
+		var anim_exists := animation_player.has_animation(current_weapon_slot.weapon.shoot_animation)
+		if anim_exists and animation_player.is_playing():
+			return
+			
+		if anim_exists:
 			animation_player.play(current_weapon_slot.weapon.shoot_animation)
-			if current_weapon_slot.weapon.has_ammo:
-				current_weapon_slot.current_ammo -= 1
-				
-			update_ammo.emit([current_weapon_slot.current_ammo, current_weapon_slot.reserve_ammo])
+		
+		var shoot_player := _play_shoot_sound()
 			
-			if shot_tween:
-				shot_tween.kill()
+		if current_weapon_slot.weapon.has_ammo:
+			current_weapon_slot.current_ammo -= 1
 			
-			var Spread = Vector2.ZERO
+		update_ammo.emit([current_weapon_slot.current_ammo, current_weapon_slot.reserve_ammo])
+		
+		if shot_tween:
+			shot_tween.kill()
+		
+		var Spread = Vector2.ZERO
+		
+		if current_weapon_slot.weapon.weapon_spray:
+			_count = _count + 1
+			Spread = spray_profiles[current_weapon_slot.weapon.weapon_name].Get_Spray(_count, current_weapon_slot.weapon.magazine)
 			
-			if current_weapon_slot.weapon.weapon_spray:
-				_count = _count + 1
-				Spread = spray_profiles[current_weapon_slot.weapon.weapon_name].Get_Spray(_count, current_weapon_slot.weapon.magazine)
-				
-			load_projectile(Spread)
+		load_projectile(Spread, shoot_player)
 	else:
 		reload()
 		
-func load_projectile(_spread):
+func _get_spawn_node() -> Node3D:
+	var weapons_models := get_parent().get_node_or_null("Weapons_Models")
+	if weapons_models:
+		var weapon_node := weapons_models.find_child(current_weapon_slot.weapon.weapon_name, true, false)
+		if weapon_node:
+			var custom_spawn := weapon_node.find_child("ProjectileSpawn", true, false)
+			if custom_spawn:
+				return custom_spawn
+	return bullet_point
+		
+func load_projectile(_spread, shoot_player: AudioStreamPlayer = null):
+	var spawn_node := _get_spawn_node()
 	var _projectile:Projectile = current_weapon_slot.weapon.projectile_to_load.instantiate()
 	
-	_projectile.position = bullet_point.global_position
+	_projectile.position = spawn_node.global_position
 	_projectile.rotation = owner.rotation
 	
-	bullet_point.add_child(_projectile)
+	spawn_node.add_child(_projectile)
 	add_signal_to_hud.emit(_projectile)
-	var bullet_point_origin = bullet_point.global_position
+	var bullet_point_origin = spawn_node.global_position
 	_projectile._Set_Projectile(current_weapon_slot.weapon.damage,_spread,current_weapon_slot.weapon.fire_range, bullet_point_origin)
+	
+	if shoot_player != null:
+		_projectile.tree_exiting.connect(shoot_player.stop)
+		_projectile.tree_exiting.connect(shoot_player.queue_free)
 
 func reload() -> void:
 	if current_weapon_slot.current_ammo == current_weapon_slot.weapon.magazine:
 		return
 	elif not animation_player.is_playing():
 		if current_weapon_slot.reserve_ammo != 0:
-			animation_player.queue(current_weapon_slot.weapon.reload_animation)
+			_queue_animation_if_exists(current_weapon_slot.weapon.reload_animation)
 		else:
-			animation_player.queue(current_weapon_slot.weapon.out_of_ammo_animation)
+			_queue_animation_if_exists(current_weapon_slot.weapon.out_of_ammo_animation)
 
 func calculate_reload() -> void:
 	if current_weapon_slot.current_ammo == current_weapon_slot.weapon.magazine:
@@ -185,7 +264,7 @@ func melee() -> void:
 		return
 		
 	if Current_Anim != current_weapon_slot.weapon.melee_animation:
-		animation_player.play(current_weapon_slot.weapon.melee_animation)
+		_play_animation_if_exists(current_weapon_slot.weapon.melee_animation)
 		if melee_hitbox.is_colliding():
 			var colliders = melee_hitbox.get_collision_count()
 			for c in colliders:
@@ -209,7 +288,7 @@ func drop(_slot: WeaponSlot) -> void:
 				weapon_dropped.set_global_transform(bullet_point.get_global_transform())
 				get_tree().get_root().add_child(weapon_dropped)
 				
-				animation_player.play(current_weapon_slot.weapon.drop_animation)
+				_play_animation_if_exists(current_weapon_slot.weapon.drop_animation)
 				weapon_index  = max(weapon_index-1,0)
 				exit(weapon_stack[weapon_index])
 	else:
@@ -253,6 +332,14 @@ func _on_pick_up_detection_body_entered(body: RigidBody3D):
 			exit(weapon_slot)
 			initialize(weapon_slot)
 			body.queue_free()
+
+func _play_shoot_sound() -> AudioStreamPlayer:
+	var player := AudioStreamPlayer.new()
+	player.stream = SHOOT_SOUNDS[randi() % SHOOT_SOUNDS.size()]
+	player.bus = "SFX"
+	add_child(player)
+	player.play()
+	return player
 
 func add_ammo(_weapon_slot: WeaponSlot, ammo: int)->int:
 	var weapon = _weapon_slot.weapon

@@ -3,8 +3,10 @@
 [ext_resource type="Script" path="res://scenes/menus/options_menu/game/game_options_menu.gd" id="1_hvcyg"]
 [ext_resource type="Script" path="res://addons/maaacks_game_template/base/nodes/utilities/capture_focus.gd" id="2_t8t6j"]
 [ext_resource type="PackedScene" path="res://scenes/menus/options_menu/game/reset_game_control/reset_game_control.tscn" id="3_pfgxr"]
+[ext_resource type="Theme" path="res://resources/themes/ui_theme.tres" id="4_ui_theme"]
 
 [node name="Game" type="MarginContainer" unique_id=205916118]
+theme = ExtResource("4_ui_theme")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
