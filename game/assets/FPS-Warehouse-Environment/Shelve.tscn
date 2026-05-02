@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://b1qea1yooecy"]
 
 [ext_resource type="Texture2D" uid="uid://bwnoyhvdcpnfj" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Shelve_Shelve.webp" id="1_ydgna"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwnu4"]
 resource_name = "Shelve__sub0__Shelve"
@@ -48,6 +49,7 @@ data = PackedVector3Array(-79.1371, 13.6243, -31.284698, -79.1371, 13.6243, 31.2
 [node name="Shelve2" type="Node3D" unique_id=1053957578]
 
 [node name="Shelve" type="MeshInstance3D" parent="." unique_id=815012645]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ceg5v")
 

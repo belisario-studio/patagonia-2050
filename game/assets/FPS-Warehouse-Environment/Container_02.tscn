@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dmdfknop3v15e" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Container_02_Container.webp" id="1_3k0f5"]
 [ext_resource type="Texture2D" uid="uid://vrknap6o4ci5" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Container_02_Container_N.webp" id="2_live7"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tb5o3"]
 resource_name = "Container_02__sub0__Container"
@@ -49,6 +50,7 @@ data = PackedVector3Array(-121.51109, 258.64218, 300.80408, -121.51109, 0, 300.8
 [node name="Container_022" type="Node3D" unique_id=1973044392]
 
 [node name="Container_02" type="MeshInstance3D" parent="." unique_id=2081440881]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 mesh = SubResource("ArrayMesh_30rsi")
 

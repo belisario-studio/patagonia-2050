@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bqjvvtxkfi33g" path="res://assets/GLBs/FPS_Factory_Area/Models/Lowpoly_Factory/Pipe_1_Tex_RGB_3_VAR01.webp" id="1_yull5"]
 [ext_resource type="Texture2D" uid="uid://cjgl2k0bu38f" path="res://assets/GLBs/FPS_Factory_Area/Models/Lowpoly_Factory/Pipe_1_Tex_RGB_Metallic.webp" id="2_6ontm"]
 [ext_resource type="Texture2D" uid="uid://d3t8p5qshfnkx" path="res://assets/GLBs/FPS_Factory_Area/Models/Lowpoly_Factory/Pipe_1_Tex_RGB_3_Normal.webp" id="3_5qpal"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkvhd"]
 resource_name = "Pipe_1__sub0__Tex_RGB_3_METAL"
@@ -57,6 +58,7 @@ data = PackedVector3Array(10366.135, 291.8522, -2445.4731, 10366.135, 293.82318,
 [node name="Pipe_12" type="Node3D" unique_id=947491853]
 
 [node name="Pipe_1" type="MeshInstance3D" parent="." unique_id=732278274]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, -259.75055, 0.073942766, 58.931282)
 mesh = SubResource("ArrayMesh_3ak1c")
 

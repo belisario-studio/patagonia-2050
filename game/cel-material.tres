@@ -1,0 +1,45 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://biomld7j8uofa"]
+
+[ext_resource type="Shader" uid="uid://b6n0ve4k5mh1l" path="res://cel-shader-base.gdshader" id="1_celsh"]
+
+[sub_resource type="Shader" id="Shader_63jkp"]
+code = "shader_type spatial;
+
+render_mode cull_front, unshaded, depth_draw_never;
+
+global uniform vec4 outline_color;
+global uniform float outline_width;
+
+void vertex() {
+	vec4 clip_position = 
+			PROJECTION_MATRIX *
+			(MODELVIEW_MATRIX * vec4(VERTEX, 1.0));
+	vec3 clip_normal =
+			mat3(PROJECTION_MATRIX) *
+			(mat3(MODELVIEW_MATRIX) * NORMAL);
+	clip_position.xy +=
+			normalize(clip_normal.xy) /
+			VIEWPORT_SIZE *
+			clip_position.w *
+			outline_width;
+	POSITION = clip_position;
+}
+
+void fragment() {
+	ALBEDO = outline_color.rgb;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wlewv"]
+render_priority = 0
+shader = SubResource("Shader_63jkp")
+
+[resource]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_wlewv")
+shader = ExtResource("1_celsh")
+shader_parameter/color = Color(0.2509804, 0.2509804, 0.2509804, 0)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

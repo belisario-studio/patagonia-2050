@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://8mjnd33tchpi" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Metal_Sheet_06_Metal_Sheets_Albedo.webp" id="1_t6cxv"]
 [ext_resource type="Texture2D" uid="uid://c2cv4kk4f2qse" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Metal_Sheet_06_Metal_Sheets_Normal.webp" id="2_dnw1p"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ju343"]
 resource_name = "Metal_Sheet_06__sub0__Metal_Sheets"
@@ -51,6 +52,7 @@ data = PackedVector3Array(-120.542694, 8.6595, 131.4793, -110.7807, -0.5651, 137
 [node name="Metal_Sheet_062" type="Node3D" unique_id=1352194400]
 
 [node name="Metal_Sheet_06" type="MeshInstance3D" parent="." unique_id=1483378915]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 mesh = SubResource("ArrayMesh_2hg0u")
 

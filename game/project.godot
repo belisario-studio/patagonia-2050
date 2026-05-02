@@ -130,3 +130,22 @@ copy_path="res://"
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+
+[shader_globals]
+
+specular_smoothness={
+"type": "float",
+"value": 0.1
+}
+fresnel_smoothness={
+"type": "float",
+"value": 0.25
+}
+outline_width={
+"type": "float",
+"value": 4.0
+}
+outline_color={
+"type": "color",
+"value": Color(0, 0, 0, 1)
+}

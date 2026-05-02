@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cmdpfein7lmcs" path="res://assets/GLBs/FPS_Factory_Area/Models/Lowpoly_Factory/Bridge_Tex_RGB_3_VAR01.webp" id="1_7c1r5"]
 [ext_resource type="Texture2D" uid="uid://bjvagbanckper" path="res://assets/GLBs/FPS_Factory_Area/Models/Lowpoly_Factory/Bridge_Tex_RGB_Metallic.webp" id="2_78b14"]
 [ext_resource type="Texture2D" uid="uid://blrvhsroarhrx" path="res://assets/GLBs/FPS_Factory_Area/Models/Lowpoly_Factory/Bridge_Tex_RGB_3_Normal.webp" id="3_plsfq"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2iek"]
 resource_name = "Bridge__sub0__Tex_RGB_3_METAL"
@@ -57,6 +58,7 @@ data = PackedVector3Array(7875.649, 69.679, -1986.0212, 7875.649, 88.2111, -1986
 [node name="Bridge2" type="Node3D" unique_id=301458086]
 
 [node name="Bridge" type="MeshInstance3D" parent="." unique_id=833212558]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, -196.25081, 0.053221554, 49.12183)
 mesh = SubResource("ArrayMesh_ixiqs")
 

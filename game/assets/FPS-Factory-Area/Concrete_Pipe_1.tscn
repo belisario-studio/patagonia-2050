@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dn0dxm0sw326v" path="res://assets/GLBs/FPS_Factory_Area/Models/Lowpoly_Factory/Concrete_Pipe_1_Tex_RGB_3_VAR01.webp" id="1_yiyuv"]
 [ext_resource type="Texture2D" uid="uid://der3mn8j4gvdd" path="res://assets/GLBs/FPS_Factory_Area/Models/Lowpoly_Factory/Concrete_Pipe_1_Tex_RGB_Metallic.webp" id="2_ym85c"]
 [ext_resource type="Texture2D" uid="uid://jnjl372ytrh3" path="res://assets/GLBs/FPS_Factory_Area/Models/Lowpoly_Factory/Concrete_Pipe_1_Tex_RGB_3_Normal.webp" id="3_a058q"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vj816"]
 resource_name = "Concrete_Pipe_1__sub0__Tex_RGB_3_METAL"
@@ -57,6 +58,7 @@ data = PackedVector3Array(9472.289, 3.4780998, -721.5976, 9474.416, 3.4780998, -
 [node name="Concrete_Pipe_12" type="Node3D" unique_id=1043997785]
 
 [node name="Concrete_Pipe_1" type="MeshInstance3D" parent="." unique_id=1011794922]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, -238.27457, 0.037162073, 21.940876)
 mesh = SubResource("ArrayMesh_1p502")
 

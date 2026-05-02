@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://dtasvjxur26ip"]
 
 [ext_resource type="Texture2D" uid="uid://ckdju8un8niuh" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Wall_01_Wall_Ttexture.webp" id="1_nwbca"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bxebi"]
 resource_name = "Wall_01__sub0__Wall"
@@ -48,6 +49,7 @@ data = PackedVector3Array(-27.4186, 5.7528996, 8.9326, -27.4186, 4.2335, 10.4543
 [node name="Wall_012" type="Node3D" unique_id=1226413914]
 
 [node name="Wall_01" type="MeshInstance3D" parent="." unique_id=316989413]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 mesh = SubResource("ArrayMesh_8wx7v")
 

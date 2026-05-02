@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cujiaaji05ts5" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Decals/Water_Decal_Water.webp" id="1_or8hr"]
 [ext_resource type="Texture2D" uid="uid://n4wpxd8l5utv" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Decals/Water_Decal_WaterN.webp" id="2_aacrw"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxwxx"]
 resource_name = "Water_Decal__sub0__Water"
@@ -49,6 +50,7 @@ data = PackedVector3Array(-112.2251, 0, 112.719795, 112.2251, 0, -112.719795, 11
 [node name="Water_Decal2" type="Node3D" unique_id=103925379]
 
 [node name="Water_Decal" type="MeshInstance3D" parent="." unique_id=15802558]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 mesh = SubResource("ArrayMesh_w3d1k")
 

@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bno1qwfyf1enr" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Barrel_01_Barrels.webp" id="1_gypj6"]
 [ext_resource type="Texture2D" uid="uid://bkos0aehi6pm7" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Barrel_01_Barrels_N.webp" id="2_ryrgu"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2hmqt"]
 resource_name = "Barrel_01__sub0__Barrels"
@@ -51,10 +52,12 @@ data = PackedVector3Array(-0.00049999997, 72.7921, -34.949398, 9.0447, 105.48949
 [node name="Barrel_012" type="Node3D" unique_id=1816198887]
 
 [node name="Barrel_01" type="MeshInstance3D" parent="." unique_id=294938407]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 mesh = SubResource("ArrayMesh_f8ial")
 
 [node name="Barrel_01_col" type="StaticBody3D" parent="Barrel_01" unique_id=821598399]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Barrel_01/Barrel_01_col" unique_id=726466663]
+visible = false
 shape = SubResource("ConcavePolygonShape3D_2awpa")

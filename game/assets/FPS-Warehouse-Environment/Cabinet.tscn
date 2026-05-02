@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cxhfq0nr4tx5q" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Cabinet_Cabinet_Diffuse.webp" id="1_2yclo"]
 [ext_resource type="Texture2D" uid="uid://babh57blm47rt" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Cabinet_cabinet_normal.webp" id="2_f3p30"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0tk6"]
 resource_name = "Cabinet__sub0__Cabinet"
@@ -51,6 +52,7 @@ data = PackedVector3Array(0.24569999, 13.7655, 22.984999, -37.429, 10.1431, 22.9
 [node name="Cabinet2" type="Node3D" unique_id=585749382]
 
 [node name="Cabinet" type="MeshInstance3D" parent="." unique_id=950807327]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 mesh = SubResource("ArrayMesh_rl8yp")
 
