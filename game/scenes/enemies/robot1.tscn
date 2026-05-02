@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://b7f8ofl7vsr8h"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_ja1fk"]
+[ext_resource type="PackedScene" uid="uid://icd08p0k28wa" path="res://scenes/enemies/enemy_projectile.tscn" id="2_qqgjl"]
+[ext_resource type="Script" uid="uid://dh041mrhkb0gk" path="res://scripts/enemy_animation.gd" id="3_0xwfa"]
+[ext_resource type="Texture2D" uid="uid://cuhco38i6sdfh" path="res://assets/enemies/robot1_idle.png" id="4_oo6y8"]
+[ext_resource type="Texture2D" uid="uid://bdr3jafuurqdx" path="res://assets/enemies/robot1_walk.png" id="5_c1ac4"]
+[ext_resource type="Texture2D" uid="uid://cmjuiqmvbaoci" path="res://assets/enemies/robot1_shoot.png" id="6_wbtmf"]
+[ext_resource type="Texture2D" uid="uid://djd813ej6vp2y" path="res://assets/enemies/robot1_death.png" id="7_cpb6u"]
+[ext_resource type="Script" uid="uid://csywig2n50jxm" path="res://scripts/enemy_animated_sprite.gd" id="8_klyr4"]
+
+[sub_resource type="Resource" id="Resource_qch6t"]
+script = ExtResource("3_0xwfa")
+texture = ExtResource("4_oo6y8")
+fps = 1.0
+loop = false
+metadata/_custom_type_script = "uid://dh041mrhkb0gk"
+
+[sub_resource type="Resource" id="Resource_tihwb"]
+script = ExtResource("3_0xwfa")
+texture = ExtResource("5_c1ac4")
+hframes = 4
+
+[sub_resource type="Resource" id="Resource_p7w77"]
+script = ExtResource("3_0xwfa")
+texture = ExtResource("6_wbtmf")
+hframes = 2
+fps = 1.0
+
+[sub_resource type="Resource" id="Resource_k4gvh"]
+script = ExtResource("3_0xwfa")
+texture = ExtResource("7_cpb6u")
+hframes = 5
+fps = 4.0
+loop = false
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_enemy"]
+radius = 0.4
+height = 3.2
+
+[node name="Enemy" type="CharacterBody3D" unique_id=1731178815 node_paths=PackedStringArray("muzzle") groups=["Target"]]
+script = ExtResource("1_ja1fk")
+attack_range = 7.0
+projectile_scene = ExtResource("2_qqgjl")
+muzzle = NodePath("Muzzle")
+sidestep_duration = 2.0
+idle_animation = SubResource("Resource_qch6t")
+walk_animation = SubResource("Resource_tihwb")
+shoot_animation = SubResource("Resource_p7w77")
+death_animation = SubResource("Resource_k4gvh")
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=864492495]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.655704, 0)
+pixel_size = 0.005
+billboard = 2
+texture = ExtResource("4_oo6y8")
+script = ExtResource("8_klyr4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=433166127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5790601, 0)
+shape = SubResource("CapsuleShape3D_enemy")
+
+[node name="Muzzle" type="Marker3D" parent="." unique_id=1900000001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.599, 0)

@@ -1,5 +1,11 @@
 extends CharacterBody3D
 
+signal health_changed(current: int, maximum: int)
+
+@export_category("Health")
+@export var max_health: int = 100
+var _health: int = 100
+
 const FOOTSTEP_SOUNDS := [
 	preload("res://assets/audio/paso1.mp3"),
 	preload("res://assets/audio/paso2.mp3"),
@@ -9,10 +15,10 @@ const FOOTSTEP_INTERVAL := 0.45
 
 @onready var camera = %Camera
 @export var subviewport_camera: Camera3D
-@export var main_camera:Camera3D
+@export var main_camera: Camera3D
 @export var animation_tree: AnimationTree
 
-var camera_rotation: Vector2 = Vector2(0.0,0.0)
+var camera_rotation: Vector2 = Vector2(0.0, 0.0)
 var mouse_sensitivity = 0.001
 var crouched: bool = false
 var crouch_blocked: bool = false
@@ -21,13 +27,13 @@ var crouch_blocked: bool = false
 @export var enable_crouch: bool = true
 @export var crouch_toggle: bool = false
 @export var crouch_collision: ShapeCast3D
-@export_range(0.0,3.0) var crouch_speed_reduction = 2.0
-@export_range(0.0,0.50) var crouch_blend_speed = .2
+@export_range(0.0, 3.0) var crouch_speed_reduction = 2.0
+@export_range(0.0, 0.50) var crouch_blend_speed = .2
 enum {GROUND_CROUCH = -1, STANDING = 0, AIR_CROUCH = 1}
 
 @export_category("Lean Parametres")
 @export var enable_lean: bool = true
-@export_range(0.0,1.0) var lean_speed: float = .2
+@export_range(0.0, 1.0) var lean_speed: float = .2
 @export var right_lean_collision: ShapeCast3D
 @export var left_lean_collision: ShapeCast3D
 var lean_tween
@@ -40,14 +46,14 @@ enum {LEFT = 1, CENTRE = 0, RIGHT = -1}
 @export var sprint_time: float = 1.0
 @export var sprint_replenish_rate: float = 0.30
 @export var acceleration: float = 120
-@export_range(0.01,1.0) var air_acceleration_modifier: float = 0.1
+@export_range(0.01, 1.0) var air_acceleration_modifier: float = 0.1
 var sprint_on_cooldown: bool = false
 var sprint_time_remaining: float = sprint_time
 @onready var sprint_bar: Range = $CanvasLayer/SprintBar
 
 const NORMAL_speed = 1
-@export_range(1.0,3.0) var sprint_speed: float = 2.0
-@export_range(0.1,1.0) var walk_speed: float = 0.5
+@export_range(1.0, 3.0) var sprint_speed: float = 2.0
+@export_range(0.1, 1.0) var walk_speed: float = 0.5
 var speed_modifier: float = NORMAL_speed
 
 @onready var _footstep_player := AudioStreamPlayer3D.new()
@@ -66,8 +72,8 @@ var _footstep_timer: float = 0.0
 var jump_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var fall_gravity: float
 var jump_velocity: float
-var base_speed: float 
-var _speed: float 
+var base_speed: float
+var _speed: float
 var jump_available: bool = true
 var jump_buffer: bool = false
 
@@ -82,6 +88,9 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_APPLICATION_FOCUS_IN:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
+	add_to_group("player")
+	_health = max_health
+
 func update_camera_rotation() -> void:
 	var current_rotation = get_rotation()
 	camera_rotation.x = current_rotation.y
@@ -139,10 +148,10 @@ func _input(event: InputEvent) -> void:
 			speed_modifier = walk_speed
 
 func calculate_movement_parameters() -> void:
-	jump_gravity = (2*jump_height)/pow(jump_peak_time,2)
-	fall_gravity = (2*jump_height)/pow(jump_fall_time,2)
+	jump_gravity = (2 * jump_height) / pow(jump_peak_time, 2)
+	fall_gravity = (2 * jump_height) / pow(jump_fall_time, 2)
 	jump_velocity = jump_gravity * jump_peak_time
-	base_speed = jump_distance/(jump_peak_time+jump_fall_time)
+	base_speed = jump_distance / (jump_peak_time + jump_fall_time)
 	_speed = base_speed
 
 func lean(blend_amount: int) -> void:
@@ -151,14 +160,14 @@ func lean(blend_amount: int) -> void:
 			lean_tween.kill()
 		
 		lean_tween = get_tree().create_tween()
-		lean_tween.tween_property(animation_tree,"parameters/lean_blend/blend_amount", blend_amount, lean_speed)
+		lean_tween.tween_property(animation_tree, "parameters/lean_blend/blend_amount", blend_amount, lean_speed)
 
 func lean_collision() -> void:
 	animation_tree["parameters/left_collision_blend/blend_amount"] = lerp(
-		float(animation_tree["parameters/left_collision_blend/blend_amount"]),float(left_lean_collision.is_colliding()),lean_speed
+		float(animation_tree["parameters/left_collision_blend/blend_amount"]), float(left_lean_collision.is_colliding()), lean_speed
 	)
 	animation_tree["parameters/right_collision_blend/blend_amount"] = lerp(
-		float(animation_tree["parameters/right_collision_blend/blend_amount"]),float(right_lean_collision.is_colliding()),lean_speed
+		float(animation_tree["parameters/right_collision_blend/blend_amount"]), float(right_lean_collision.is_colliding()), lean_speed
 	)
 
 func crouch() -> void:
@@ -175,7 +184,7 @@ func crouch() -> void:
 			else:
 				Blend = AIR_CROUCH
 		var blend_tween = get_tree().create_tween()
-		blend_tween.tween_property(animation_tree,"parameters/Crouch_Blend/blend_amount",Blend,crouch_blend_speed)
+		blend_tween.tween_property(animation_tree, "parameters/Crouch_Blend/blend_amount", Blend, crouch_blend_speed)
 		crouched = !crouched
 	else:
 		crouch_blocked = true
@@ -186,9 +195,9 @@ func camera_look(Movement: Vector2) -> void:
 	transform.basis = Basis()
 	camera.transform.basis = Basis()
 	
-	rotate_object_local(Vector3(0,1,0),-camera_rotation.x) # first rotate in Y
-	camera.rotate_object_local(Vector3(1,0,0), -camera_rotation.y) # then rotate in X
-	camera_rotation.y = clamp(camera_rotation.y,-1.5,1.2)
+	rotate_object_local(Vector3(0, 1, 0), -camera_rotation.x) # first rotate in Y
+	camera.rotate_object_local(Vector3(1, 0, 0), -camera_rotation.y) # then rotate in X
+	camera_rotation.y = clamp(camera_rotation.y, -1.5, 1.2)
 	
 func exit_sprint() -> void:
 	if !sprint_timer.is_stopped():
@@ -199,14 +208,13 @@ func sprint_replenish(delta) -> void:
 	var sprint_bar_Value
 
 	if !sprint_on_cooldown and (speed_modifier != sprint_speed):
-		
 		if is_on_floor():
-			sprint_time_remaining = move_toward(sprint_time_remaining, sprint_time, delta*sprint_replenish_rate)
+			sprint_time_remaining = move_toward(sprint_time_remaining, sprint_time, delta * sprint_replenish_rate)
 			
-		sprint_bar_Value= (sprint_time_remaining/sprint_time)*100
+		sprint_bar_Value = (sprint_time_remaining / sprint_time) * 100
 		
 	else:
-		sprint_bar_Value = (sprint_timer.time_left/sprint_time)*100
+		sprint_bar_Value = (sprint_timer.time_left / sprint_time) * 100
 	
 	sprint_bar.value = sprint_bar_Value
 	
@@ -233,12 +241,12 @@ func _physics_process(_delta: float) -> void:
 	# Add the gravity.
 	var _acceleration
 	if not is_on_floor():
-		_acceleration = acceleration*air_acceleration_modifier
+		_acceleration = acceleration * air_acceleration_modifier
 		
 		if coyote_timer.is_stopped():
 			coyote_timer.start(coyote_time)
 	
-		if velocity.y>0:
+		if velocity.y > 0:
 			velocity.y -= jump_gravity * _delta
 		else:
 			velocity.y -= fall_gravity * _delta
@@ -246,7 +254,7 @@ func _physics_process(_delta: float) -> void:
 		_acceleration = acceleration
 		jump_available = true
 		coyote_timer.stop()
-		_speed = (base_speed / max((float(crouched)*crouch_speed_reduction),1)) * speed_modifier
+		_speed = (base_speed / max((float(crouched) * crouch_speed_reduction), 1)) * speed_modifier
 		if jump_buffer:
 			jump()
 			jump_buffer = false
@@ -266,8 +274,8 @@ func _physics_process(_delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	velocity.x = move_toward(velocity.x, direction.x * _speed, _acceleration*_delta)
-	velocity.z = move_toward(velocity.z, direction.z * _speed, _acceleration*_delta)
+	velocity.x = move_toward(velocity.x, direction.x * _speed, _acceleration * _delta)
+	velocity.z = move_toward(velocity.z, direction.z * _speed, _acceleration * _delta)
 	
 	move_and_slide()
 	_handle_footsteps(_delta)
@@ -292,7 +300,7 @@ func _handle_footsteps(delta: float) -> void:
 	var multiplier := speed_modifier if speed_modifier > 0.0 else 1.0
 	_footstep_timer = FOOTSTEP_INTERVAL / multiplier
 
-func jump()->void:
+func jump() -> void:
 	velocity.y = jump_velocity
 	jump_available = false
 
@@ -308,5 +316,12 @@ func _on_sprint_cooldown_timeout():
 func _on_coyote_timer_timeout() -> void:
 	jump_available = false
 
-func on_jump_buffer_timeout()->void:
+func on_jump_buffer_timeout() -> void:
 	jump_buffer = false
+
+
+func Hit_Successful(damage: int, _direction: Vector3 = Vector3.ZERO, _position: Vector3 = Vector3.ZERO) -> void:
+	if _health <= 0:
+		return
+	_health = maxi(_health - damage, 0)
+	health_changed.emit(_health, max_health)
