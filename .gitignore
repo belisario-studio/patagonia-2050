@@ -7,7 +7,7 @@ godot_bin/
 # Godot
 .godot/
 .import/
-# export_presets.cfg
+game/exports/**
 
 # Source files (export to game-ready formats)
 *.blend
