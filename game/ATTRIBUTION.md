@@ -1,10 +1,11 @@
 # Attribution
 ## Collaborators
 
-### Role
-Person 1  
-Person 2  
-[Person w/ Link]()  
+### Team
+Santiago Roussineau - Dev  
+Daniel Lerner - Arte  
+Hugo SS - Música y SFX  
+Emilia Cabral - Dev y Lead  
 
 ## Sourced
 ### Asset Type
