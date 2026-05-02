@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://37pxtc5dqpk7" path="res://assets/GLBs/FPS_Factory_Area/Models/Lowpoly_Factory/Iron_Rode_3_Tex_RGB_3_VAR01.webp" id="1_aiejf"]
 [ext_resource type="Texture2D" uid="uid://c566jnhdqwecx" path="res://assets/GLBs/FPS_Factory_Area/Models/Lowpoly_Factory/Iron_Rode_3_Tex_RGB_Metallic.webp" id="2_je6a2"]
 [ext_resource type="Texture2D" uid="uid://mx4rhim5re16" path="res://assets/GLBs/FPS_Factory_Area/Models/Lowpoly_Factory/Iron_Rode_3_Tex_RGB_3_Normal.webp" id="3_2w076"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxlom"]
 resource_name = "Iron_Rode_3__sub0__Tex_RGB_3_METAL"
@@ -57,6 +58,7 @@ data = PackedVector3Array(8959.159, 48.1517, -535.4734, 8959.159, 49.4428, -535.
 [node name="Iron_Rode_32" type="Node3D" unique_id=1794024748]
 
 [node name="Iron_Rode_3" type="MeshInstance3D" parent="." unique_id=1755747458]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, -223.08513, -0.020577814, 11.856315)
 mesh = SubResource("ArrayMesh_mvcbj")
 

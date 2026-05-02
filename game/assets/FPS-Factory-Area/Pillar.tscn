@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://byud0qaihkmt0" path="res://assets/GLBs/FPS_Factory_Area/Models/Lowpoly_Factory/Pillar_Tex_RGB_3_VAR01.webp" id="1_gownp"]
 [ext_resource type="Texture2D" uid="uid://b5xo4ftw06tf8" path="res://assets/GLBs/FPS_Factory_Area/Models/Lowpoly_Factory/Pillar_Tex_RGB_Metallic.webp" id="2_x2h5h"]
 [ext_resource type="Texture2D" uid="uid://2oewmjx5dvqy" path="res://assets/GLBs/FPS_Factory_Area/Models/Lowpoly_Factory/Pillar_Tex_RGB_3_Normal.webp" id="3_04v8l"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsnvd"]
 resource_name = "Pillar__sub0__Tex_RGB_3_METAL"
@@ -55,6 +56,7 @@ data = PackedVector3Array(10174.182, -0.0001, -2785.4507, 10174.182, -0.0001, -2
 [node name="Pillar2" type="Node3D" unique_id=434713017]
 
 [node name="Pillar" type="MeshInstance3D" parent="." unique_id=646153310]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, -258.7193, 6.201172e-06, 70.47586)
 mesh = SubResource("ArrayMesh_l2ti1")
 

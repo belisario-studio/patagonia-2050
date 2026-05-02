@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bvc755l4pj7c2" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Tires_Tires.webp" id="1_db5sc"]
 [ext_resource type="Texture2D" uid="uid://b1yvlg7nrnxtk" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Tires_Tires_N.webp" id="2_msjsp"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hqciw"]
 resource_name = "Tires__sub0__Tires"
@@ -51,6 +52,7 @@ data = PackedVector3Array(39.257298, 3.3267999, 45.0314, 40.03, 21.3371, 37.188,
 [node name="Tires2" type="Node3D" unique_id=1814376657]
 
 [node name="Tires" type="MeshInstance3D" parent="." unique_id=1957831663]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 mesh = SubResource("ArrayMesh_4k1fm")
 

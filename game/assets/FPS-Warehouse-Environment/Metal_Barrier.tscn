@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bbmyog6dayqtr" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Metal_Barrier_Metal_Barrier.webp" id="1_sma7x"]
 [ext_resource type="Texture2D" uid="uid://7ypsqiu2yvbv" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Metal_Barrier_Metal_Barrier_N.webp" id="2_jbwa1"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lmska"]
 resource_name = "Metal_Barrier__sub0__Metal_Barrier"
@@ -51,6 +52,7 @@ data = PackedVector3Array(161.0241, 70.180595, 0.36569998, 160.81819, 77.3944, -
 [node name="Metal_Barrier2" type="Node3D" unique_id=2136897097]
 
 [node name="Metal_Barrier" type="MeshInstance3D" parent="." unique_id=892285759]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ijw7y")
 

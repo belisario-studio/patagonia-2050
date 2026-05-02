@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bg0574ail3ssr" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Paper_Box_Paper_Box_01_N.webp" id="2_qchyh"]
 [ext_resource type="Texture2D" uid="uid://bqpybig7f7vks" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Paper_Box_Paper_Box_02.webp" id="3_xr3ic"]
 [ext_resource type="Texture2D" uid="uid://ctubjfomevmsj" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Paper_Box_Paper_Box_02_N.webp" id="4_wnilw"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bd1kg"]
 resource_name = "Paper_Box__sub0__Paper_Box_01"
@@ -83,6 +84,7 @@ data = PackedVector3Array(8.2941, 38.5215, 72.0888, -4.364, 29.674, 81.6074, -4.
 [node name="Paper_Box2" type="Node3D" unique_id=133303631]
 
 [node name="Paper_Box" type="MeshInstance3D" parent="." unique_id=413346484]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 mesh = SubResource("ArrayMesh_67gnq")
 

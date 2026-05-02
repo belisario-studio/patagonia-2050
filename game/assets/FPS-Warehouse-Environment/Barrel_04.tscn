@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cf174b35tm4pt" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Barrel_04_Barrels.webp" id="1_u56jv"]
 [ext_resource type="Texture2D" uid="uid://dw418apb3qnpp" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Barrel_04_Barrels_N.webp" id="2_fuo5n"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4jxf"]
 resource_name = "Barrel_04__sub0__Barrels"
@@ -51,6 +52,7 @@ data = PackedVector3Array(-0.00049999997, 72.7921, -34.949398, 9.0447, 105.48949
 [node name="Barrel_042" type="Node3D" unique_id=620370625]
 
 [node name="Barrel_04" type="MeshInstance3D" parent="." unique_id=980920430]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 mesh = SubResource("ArrayMesh_sdlm8")
 

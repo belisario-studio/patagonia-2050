@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cv3c6whqqtsk5" path="res://assets/GLBs/FPS_Factory_Area/Models/Lowpoly_Factory/Tank_2_Tex_RGB_3_VAR01.webp" id="1_isytt"]
 [ext_resource type="Texture2D" uid="uid://o7f0hnmvhoat" path="res://assets/GLBs/FPS_Factory_Area/Models/Lowpoly_Factory/Tank_2_Tex_RGB_Metallic.webp" id="2_dxk7g"]
 [ext_resource type="Texture2D" uid="uid://cc05h80wdedbu" path="res://assets/GLBs/FPS_Factory_Area/Models/Lowpoly_Factory/Tank_2_Tex_RGB_3_Normal.webp" id="3_vyjkw"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ent4g"]
 resource_name = "Tank_2__sub0__Tex_RGB_3_METAL"
@@ -57,6 +58,7 @@ data = PackedVector3Array(9342.28, 119.878494, -3509.3784, 9342.28, 119.878494, 
 [node name="Tank_22" type="Node3D" unique_id=1248200792]
 
 [node name="Tank_2" type="MeshInstance3D" parent="." unique_id=164479456]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, -238.22533, 0.15470062, 88.15578)
 mesh = SubResource("ArrayMesh_8i2ki")
 

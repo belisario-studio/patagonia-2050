@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cvxhtf75qh4gi" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Fuse_Box_Electric_Meter.webp" id="1_fxwy3"]
 [ext_resource type="Texture2D" uid="uid://nyo7ovacghgu" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Fuse_Box_Electric_Meter_E.webp" id="2_ptyrk"]
 [ext_resource type="Texture2D" uid="uid://dva1hxuohv15u" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Fuse_Box_Electric_Meter_N.webp" id="3_ofian"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxoq3"]
 resource_name = "Fuse_Box__sub0__Fuse_Box"
@@ -56,6 +57,7 @@ data = PackedVector3Array(7.4901, 2.3537, 5.0628, 18.726799, 2.3537, 10.1258, 18
 [node name="Fuse_Box2" type="Node3D" unique_id=1728393962]
 
 [node name="Fuse_Box" type="MeshInstance3D" parent="." unique_id=1337134769]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 mesh = SubResource("ArrayMesh_8nvui")
 

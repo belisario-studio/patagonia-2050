@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cumssh47rqhlj" path="res://assets/GLBs/FPS_Factory_Area/Models/Mountain_1_Mountain_1_Albedo2 1.webp" id="1_kpjxd"]
 [ext_resource type="Texture2D" uid="uid://bmnxr00pibicw" path="res://assets/GLBs/FPS_Factory_Area/Models/Mountain_1_Mountain_1_Normal 1.webp" id="2_m2aoa"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wyrjt"]
 resource_name = "Mountain_1__sub0__Mountains"
@@ -51,6 +52,7 @@ data = PackedVector3Array(-36821.4, 26535.148, -9711.713, -33755.297, 27658.453,
 [node name="Mountain_12" type="Node3D" unique_id=361010016]
 
 [node name="Mountain_1" type="MeshInstance3D" parent="." unique_id=2028273350]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.01, 0, 0, 0, 0, -0.01, 0, 0.01, 0, 67.15047, 0, 32.21281)
 mesh = SubResource("ArrayMesh_7sdbw")
 

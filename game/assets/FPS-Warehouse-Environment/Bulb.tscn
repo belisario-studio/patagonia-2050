@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://drb63yru3bkro" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Bulb_Bulb_01_Albedo.webp" id="1_v8p0v"]
 [ext_resource type="Texture2D" uid="uid://b7074gf8ankfk" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Bulb_Bulb_01_Emission.webp" id="2_a1s24"]
 [ext_resource type="Texture2D" uid="uid://0p420tt2kk3b" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Bulb_Bulb_01_Normal.webp" id="3_hxjm0"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t8yrl"]
 resource_name = "Bulb__sub0__Bulb_01"
@@ -56,6 +57,7 @@ data = PackedVector3Array(31.571098, 5.8209, -10.2591, 31.677898, 5.3722997, -10
 [node name="Bulb2" type="Node3D" unique_id=735703759]
 
 [node name="Bulb" type="MeshInstance3D" parent="." unique_id=1369328353]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 mesh = SubResource("ArrayMesh_gf8wt")
 

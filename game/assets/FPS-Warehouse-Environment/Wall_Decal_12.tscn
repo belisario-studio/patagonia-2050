@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cxut0eexvootj" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Decals/Wall_Decal_12_Decals_Atlas.webp" id="1_2bwly"]
 [ext_resource type="Texture2D" uid="uid://dxrsgx2upcvoy" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Decals/Wall_Decal_12_Decals_Normal.webp" id="2_kun7p"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3yb6d"]
 resource_name = "Wall_Decal_12__sub0__Decals"
@@ -49,6 +50,7 @@ data = PackedVector3Array(-32.5212, -20.8703, 0, 32.5212, 20.8703, 0, 32.5212, -
 [node name="Wall_Decal_122" type="Node3D" unique_id=1045647838]
 
 [node name="Wall_Decal_12" type="MeshInstance3D" parent="." unique_id=1847326230]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 mesh = SubResource("ArrayMesh_wbt0h")
 

@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://sqgq1kcadu2m" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Pipe_Wall_Pipe_Wall.webp" id="1_o0mpi"]
 [ext_resource type="Texture2D" uid="uid://bgbwacretk2cb" path="res://assets/GLBs/FPS_Warehouse_Environment/Models/Pipe_Wall_Pipe_Wall_N.webp" id="2_d4fdt"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="outline_ovl_global"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4b6jv"]
 resource_name = "Pipe_Wall__sub0__Pipe_Wall"
@@ -79,6 +80,7 @@ data = PackedVector3Array(231.35579, 52.524597, 92.3212, 283.88528, 78.152596, 3
 [node name="Pipe_Wall2" type="Node3D" unique_id=2102978481]
 
 [node name="Pipe_Wall" type="MeshInstance3D" parent="." unique_id=441456556]
+material_overlay = ExtResource("outline_ovl_global")
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 mesh = SubResource("ArrayMesh_logly")
 
