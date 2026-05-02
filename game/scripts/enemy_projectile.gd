@@ -6,6 +6,7 @@ extends Area3D
 @export var lifetime: float = 4.0
 
 var direction: Vector3 = Vector3.FORWARD
+var source: Node = null
 
 
 func _ready() -> void:
@@ -19,6 +20,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node) -> void:
+	if body == source:
+		return
 	if body.is_in_group("player") and body.has_method("Hit_Successful"):
 		body.Hit_Successful(damage, direction, global_position)
 	queue_free()

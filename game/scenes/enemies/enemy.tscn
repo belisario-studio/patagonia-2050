@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bopt0dxpc7kux"]
+[gd_scene load_steps=14 format=3 uid="uid://bopt0dxpc7kux"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_enemy"]
 [ext_resource type="Script" uid="uid://csywig2n50jxm" path="res://scripts/enemy_animated_sprite.gd" id="2_anim_sprite"]
@@ -46,9 +46,7 @@ death_animation = SubResource("Resource_k4gvh")
 [node name="Sprite" type="Sprite3D" parent="." unique_id=864492495]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 pixel_size = 0.005
-texture = ExtResource("4_fcftc")
-direction_textures = Array[Texture2D]([ExtResource("3_robot"), ExtResource("4_fcftc"), null])
-lock_axis = 2
+texture = ExtResource("4_n7575")
 billboard = 2
 script = ExtResource("2_anim_sprite")
 
