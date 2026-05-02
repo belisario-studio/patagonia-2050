@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://clax28ioeir44" path="res://scenes/guns/plasma.tres" id="2_plasma"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_plasma"]
-radius = 0.15
+radius = 0.25139993
 
 [node name="plasma_torus_bullet" type="RigidBody3D" unique_id=1800001265]
 collision_layer = 16
@@ -19,16 +19,8 @@ script = ExtResource("1_plasma")
 shape = SubResource("SphereShape3D_plasma")
 
 [node name="plasma_torus_proyectile" type="CSGTorus3D" parent="." unique_id=1311492754]
-transform = Transform3D(-9.230095e-05, -0.0019001439, -0.99999815, -0.9988223, 0.048518557, 0, 0.048518475, 0.99882054, -0.0019023845, 0.05017805, -0.009527206, -0.0112914)
+transform = Transform3D(4.9217395e-09, 0.11259629, -0.9936407, 0.99841523, -0.055916764, -0.0063363086, -0.056274615, -0.99206626, -0.11241786, 0, 0, 0)
 material_override = ExtResource("2_plasma")
-transparency = 0.57
 cast_shadow = 0
 inner_radius = 0.174
 outer_radius = 0.25146207
-
-[node name="PointLight3D" type="PointLight3D" parent="." unique_id=2133697811]
-light_color = Color(0.2, 0, 1, 1)
-light_energy = 2.0
-omni_range = 3.0
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

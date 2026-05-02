@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://bo6viygofawpl"]
+[gd_scene format=4 uid="uid://bo6viygofawpl"]
 
 [ext_resource type="Script" uid="uid://4sn7rph3kvg5" path="res://assets/FPS-Template/Example World/Scripts/target.gd" id="1_bgcde"]
 
@@ -98,15 +98,14 @@ shadow_mesh = SubResource("ArrayMesh_2m06k")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qysmk"]
 points = PackedVector3Array(-0.025, -0.101996, -0.12141, 0.025, 0.0205553, 0.164571, 0.025, 0.0514205, 0.159416, 0.025, -0.0205553, -0.164571, -0.025, 0.155429, -0.0194134, -0.025, -0.12141, 0.101996, 0.025, -0.164571, 0.0205553, 0.025, 0.159448, -0.0513984, -0.025, 0.101996, 0.12141, -0.025, 0.0728457, -0.140853, 0.025, 0.149168, 0.0771136, 0.025, -0.128551, -0.107996, -0.025, -0.155429, -0.0194134, 0.025, -0.107996, 0.128551, -0.025, -0.0194134, 0.155429, 0.025, 0.0874084, -0.143984, -0.025, 0.135985, -0.0825524, -0.025, -0.0194134, -0.155429, -0.025, 0.15056, 0.0485638, 0.0201895, 0.167246, 0.0208894, 0.025, -0.0771308, -0.149139, 0.025, -0.0514205, 0.159416, -0.025, -0.0825524, 0.135985, 0.025, -0.159416, -0.0514205, -0.025, -0.135985, -0.0825524, -0.025, 0.0485638, 0.15056, -0.025, -0.15056, 0.0485638, 0.025, -0.143984, 0.0874084, 0.025, 0.0874084, 0.143984, 0.025, 0.0514205, -0.159416, 0.025, 0.128576, -0.108017, 0.0199534, 0.129165, 0.108512)
 
-[node name="Target" type="StaticBody3D" groups=["Target"]]
+[node name="Target" type="StaticBody3D" unique_id=726926298 groups=["Target"]]
 collision_layer = 32
 script = ExtResource("1_bgcde")
 
-[node name="targetA2" type="MeshInstance3D" parent="."]
+[node name="targetA2" type="MeshInstance3D" parent="." unique_id=1289312103]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0, -0.15)
 mesh = SubResource("ArrayMesh_kq0ln")
-skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1642711761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0, -0.15)
 shape = SubResource("ConvexPolygonShape3D_qysmk")

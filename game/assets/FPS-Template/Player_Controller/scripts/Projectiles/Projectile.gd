@@ -96,7 +96,7 @@ func Hit_Scan_damage(Collider, Direction, Position, _damage):
 		Collider.Hit_Successful(_damage, Direction, Position)
 
 
-func Load_Decal(_pos, _normal):
+func Load_Decal(_pos, _normal, _size := 0.35):
 	if not Display_Debug_Decal:
 		return
 	if _normal == null:
@@ -111,6 +111,7 @@ func Load_Decal(_pos, _normal):
 		x = Vector3.RIGHT
 	var z = x.cross(y)
 	rd.global_basis = Basis(x, y, z)
+	rd.size = Vector3(_size, 0.35, _size)
 		
 func Launch_Rigid_Body_Projectile(Collision_Data, _projectile, _origin_point):
 	var _Point = Collision_Data[1]
@@ -134,7 +135,10 @@ func _on_body_entered(body, _proj, _norm):
 		body.Hit_Successful(damage)
 		Hit_Successfull.emit()
 
-	Load_Decal(_proj.get_position(),_norm)
+	var decal_size := 0.35
+	if _proj.has_method("get_current_scale"):
+		decal_size = 0.35 * _proj.get_current_scale()
+	Load_Decal(_proj.get_position(), _norm, decal_size)
 	_proj.queue_free()
 		
 	Projectiles_Spawned.erase(_proj)

@@ -77,6 +77,10 @@ func _ready() -> void:
 	calculate_movement_parameters()
 	_footstep_player.bus = "SFX"
 	add_child(_footstep_player)
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_APPLICATION_FOCUS_IN:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 func update_camera_rotation() -> void:
 	var current_rotation = get_rotation()
@@ -84,10 +88,15 @@ func update_camera_rotation() -> void:
 	camera_rotation.y = current_rotation.x
 	
 	
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed and Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
+func _try_capture_mouse() -> void:
+	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		return
+
+func _input(event: InputEvent) -> void:
+	var action_pressed := event.is_action_pressed("Shoot") or event.is_action_pressed("Melee")
+	var mouse_pressed: bool = event is InputEventMouseButton and event.pressed
+	if (action_pressed or mouse_pressed):
+		_try_capture_mouse()
 
 	if event.is_action_pressed("ui_cancel"):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:

@@ -65,6 +65,8 @@ func _input(event: InputEvent) -> void:
 			exit(weapon_stack[weapon_index])
 		
 	if event.is_action_pressed("Shoot"):
+		if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		if check_valid_weapon_slot():
 			shoot()
 	
@@ -215,7 +217,7 @@ func _get_spawn_node() -> Node3D:
 		
 func load_projectile(_spread, shoot_player: AudioStreamPlayer = null):
 	var spawn_node := _get_spawn_node()
-	var _projectile:Projectile = current_weapon_slot.weapon.projectile_to_load.instantiate()
+	var _projectile := current_weapon_slot.weapon.projectile_to_load.instantiate()
 	
 	_projectile.position = spawn_node.global_position
 	_projectile.rotation = owner.rotation

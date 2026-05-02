@@ -5,8 +5,6 @@
 [ext_resource type="PackedScene" path="res://scenes/windows/main_menu_options_window.tscn" id="3_0jpat"]
 [ext_resource type="PackedScene" path="res://scenes/windows/main_menu_credits_window.tscn" id="4_m0ubd"]
 [ext_resource type="Theme" path="res://resources/themes/ui_theme.tres" id="5_ui_theme"]
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="6_jnhxr"]
-[ext_resource type="AudioStream" path="res://assets/audio/Cuecadelcoquena_loop_87bpm_mp3.mp3" id="7_iyfwk"]
 [node name="MainMenu" unique_id=869232425 instance=ExtResource("1_ub2bi")]
 theme = ExtResource("5_ui_theme")
 script = ExtResource("2_x31ro")
@@ -14,8 +12,5 @@ level_select_packed_scene = null
 confirm_new_game = false
 options_packed_scene = null
 credits_packed_scene = ExtResource("4_m0ubd")
-
-[node name="BackgroundMusicPlayer" parent="." instance=ExtResource("6_jnhxr")]
-stream = ExtResource("7_iyfwk")
 
 
