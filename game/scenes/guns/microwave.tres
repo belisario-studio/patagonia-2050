@@ -1,0 +1,37 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dnlok30x2bcy0"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5aona"]
+load_path = "res://.godot/imported/CorrugatedSteel009_1K-JPG_Color.jpg-e6134d72489d97ad60be4a450d6e0db6.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_feh0t"]
+load_path = "res://.godot/imported/CorrugatedSteel009_1K-JPG_AmbientOcclusion.jpg-45112deba826e15dce03701834138ab6.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1lcdx"]
+load_path = "res://.godot/imported/CorrugatedSteel009_1K-JPG_Displacement.jpg-add914dd43999764dc6a39b2d7cc159f.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_15n8d"]
+load_path = "res://.godot/imported/CorrugatedSteel009_1K-JPG_Metalness.jpg-63f415f615d871115ffe6101bd6e881c.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3v3cj"]
+load_path = "res://.godot/imported/CorrugatedSteel009_1K-JPG_NormalGL.jpg-0c1e921111a879620db49c256ce05d61.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hekff"]
+load_path = "res://.godot/imported/CorrugatedSteel009_1K-JPG_Roughness.jpg-8e3f3e7dfd000604ed34b344b2bbb60c.s3tc.ctex"
+
+[resource]
+albedo_color = Color(1.4450842, 1.42552, 1.6081191, 1)
+albedo_texture = SubResource("CompressedTexture2D_5aona")
+metallic = 1.0
+metallic_texture = SubResource("CompressedTexture2D_15n8d")
+metallic_texture_channel = 4
+roughness_texture = SubResource("CompressedTexture2D_hekff")
+roughness_texture_channel = 4
+emission_enabled = true
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_3v3cj")
+ao_enabled = true
+ao_texture = SubResource("CompressedTexture2D_feh0t")
+ao_texture_channel = 4
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = SubResource("CompressedTexture2D_1lcdx")

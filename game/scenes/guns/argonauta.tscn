@@ -1,0 +1,213 @@
+[gd_scene format=3 uid="uid://d23ujkxeohvjw"]
+
+[ext_resource type="PackedScene" uid="uid://dyg4wd0vsj8rr" path="res://scenes/guns/shotgun.tscn" id="1_f8v6r"]
+[ext_resource type="Script" uid="uid://bawhwunrlxv7c" path="res://scenes/guns/argonauta.gd" id="1_rkb3e"]
+[ext_resource type="Material" path="res://assets/Metal049A_1K-JPG/Metal049A_1K-JPG.tres" id="2_2gmbm"]
+[ext_resource type="Material" uid="uid://cax5vp4mn2out" path="res://outline-material.tres" id="3_p5fn1"]
+[ext_resource type="Material" uid="uid://bfpl5gm0efpqo" path="res://assets/CorrugatedSteel009_1K-JPG/CorrugatedSteel009_1K-JPG.tres" id="4_ykx7w"]
+[ext_resource type="Material" uid="uid://chveatwhbrpv3" path="res://scenes/guns/gas_tank.tres" id="5_3gx5b"]
+[ext_resource type="Material" uid="uid://dnlok30x2bcy0" path="res://scenes/guns/microwave.tres" id="6_rkb3e"]
+[ext_resource type="Texture2D" uid="uid://bsax3vkf1m0u8" path="res://argentina.png" id="7_ntxnn"]
+[ext_resource type="Material" uid="uid://clax28ioeir44" path="res://scenes/guns/plasma.tres" id="9_ntxnn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bd7xj"]
+albedo_color = Color(0.008314185, 0.08877081, 0.45112124, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nlv0c"]
+load_path = "res://.godot/imported/CorrugatedSteel009_1K-JPG_AmbientOcclusion.jpg-45112deba826e15dce03701834138ab6.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jgtub"]
+load_path = "res://.godot/imported/CorrugatedSteel009_1K-JPG_Displacement.jpg-add914dd43999764dc6a39b2d7cc159f.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7xn2v"]
+load_path = "res://.godot/imported/CorrugatedSteel009_1K-JPG_Metalness.jpg-63f415f615d871115ffe6101bd6e881c.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kk8qc"]
+load_path = "res://.godot/imported/CorrugatedSteel009_1K-JPG_NormalGL.jpg-0c1e921111a879620db49c256ce05d61.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_clrxt"]
+albedo_color = Color(1.0743763, 0.7610012, 0, 1)
+metallic = 1.0
+metallic_texture = SubResource("CompressedTexture2D_7xn2v")
+metallic_texture_channel = 4
+roughness = 0.0
+normal_texture = SubResource("CompressedTexture2D_kk8qc")
+ao_texture = SubResource("CompressedTexture2D_nlv0c")
+ao_texture_channel = 4
+heightmap_scale = 1.0
+heightmap_texture = SubResource("CompressedTexture2D_jgtub")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bd7xj"]
+load_path = "res://.godot/imported/Metal049A_1K-JPG_Color.jpg-1632a8446237758e127cf922d3c4ab36.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_clrxt"]
+load_path = "res://.godot/imported/Metal049A_1K-JPG_Displacement.jpg-d13ebc35c58f02899ccf785346c53981.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wyucb"]
+load_path = "res://.godot/imported/Metal049A_1K-JPG_Metalness.jpg-82fc90d950176f57938acfabd3ac9e43.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xn823"]
+load_path = "res://.godot/imported/Metal049A_1K-JPG_NormalGL.jpg-948f2369b3f67348dfb16f5e6e048bd6.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bkv8r"]
+load_path = "res://.godot/imported/Metal049A_1K-JPG_Roughness.jpg-f5b9f87b5dd90578e5f7f980e1b8658f.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eobq3"]
+albedo_color = Color(0.4627451, 1, 1, 1)
+albedo_texture = SubResource("CompressedTexture2D_bd7xj")
+metallic = 1.0
+metallic_texture = SubResource("CompressedTexture2D_wyucb")
+metallic_texture_channel = 4
+roughness_texture = SubResource("CompressedTexture2D_bkv8r")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_xn823")
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = SubResource("CompressedTexture2D_clrxt")
+
+[node name="Argonauta" type="Node3D" unique_id=699944324]
+script = ExtResource("1_rkb3e")
+
+[node name="shotgun" parent="." unique_id=480061811 instance=ExtResource("1_f8v6r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0012305677, 0.0008596778, -0.0011028051)
+
+[node name="Rail1" type="CSGBox3D" parent="." unique_id=1746075504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01156, 0.0374752, 0.0379861)
+material_override = ExtResource("2_2gmbm")
+material_overlay = ExtResource("3_p5fn1")
+size = Vector3(2.1552734, 0.100234985, 0.043823242)
+
+[node name="Rail2" type="CSGBox3D" parent="." unique_id=342852524]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01156, 0.0009786934, 0.17064291)
+material_override = ExtResource("2_2gmbm")
+material_overlay = ExtResource("3_p5fn1")
+size = Vector3(2.1552734, 0.21158695, 0.043823242)
+
+[node name="Coil1" type="CSGTorus3D" parent="." unique_id=494645706]
+transform = Transform3D(-0.18177213, -0.9833408, 0, 0.9833408, -0.18177213, 0, 0, 0, 1, -0.085141286, -0.0056431293, 0.099573106)
+material_override = ExtResource("4_ykx7w")
+material_overlay = ExtResource("3_p5fn1")
+inner_radius = 0.09841461
+outer_radius = 0.18357086
+
+[node name="Coil2" type="CSGTorus3D" parent="." unique_id=576717153]
+transform = Transform3D(-0.029613849, -0.9995614, 0, 0.9995614, -0.029613849, 0, 0, 0, 1, -0.5340838, -0.0030061454, 0.099573106)
+material_override = ExtResource("4_ykx7w")
+material_overlay = ExtResource("3_p5fn1")
+inner_radius = 0.09841461
+outer_radius = 0.18357086
+
+[node name="Coil3" type="CSGTorus3D" parent="." unique_id=1455041440]
+transform = Transform3D(0.28916547, -0.9572791, 0, 0.9572791, 0.28916547, 0, 0, 0, 1, -0.9455824, -0.009679198, 0.101125926)
+material_override = ExtResource("4_ykx7w")
+material_overlay = ExtResource("3_p5fn1")
+inner_radius = 0.09841461
+outer_radius = 0.18357086
+
+[node name="Coil4" type="CSGTorus3D" parent="." unique_id=1488313836]
+transform = Transform3D(-0.027031804, -0.9996347, 0, 0.9996347, -0.027031804, 0, 0, 0, 1, -1.2911423, -0.0013299584, 0.099573106)
+material_override = ExtResource("4_ykx7w")
+material_overlay = ExtResource("3_p5fn1")
+inner_radius = 0.09841461
+outer_radius = 0.18357086
+
+[node name="Gas Tank" type="CSGCombiner3D" parent="." unique_id=225531384]
+material_override = ExtResource("5_3gx5b")
+material_overlay = ExtResource("3_p5fn1")
+
+[node name="body" type="CSGCylinder3D" parent="Gas Tank" unique_id=253424805]
+transform = Transform3D(0.019197538, -0.99981564, 0, 0.9998155, 0.019197538, 0, 0, 0, 0.99999994, 0, -0.12002462, -0.18386573)
+calculate_tangents = false
+radius = 0.13330078
+height = 1.1525879
+sides = 12
+
+[node name="head" type="CSGSphere3D" parent="Gas Tank" unique_id=1659234446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5717061, -0.12937762, -0.18668956)
+radius = 0.133
+
+[node name="Microwave" type="CSGCombiner3D" parent="." unique_id=1300253944]
+material_override = ExtResource("6_rkb3e")
+material_overlay = ExtResource("3_p5fn1")
+
+[node name="Body" type="CSGCylinder3D" parent="Microwave" unique_id=173316429]
+transform = Transform3D(-4.371139e-08, 1, 0, -0.44203833, -1.9322112e-08, -0.89699614, -0.89699614, -3.920895e-08, 0.44203833, 0.32158375, -0.05988351, 0.10032967)
+radius = 0.24707031
+height = 0.5333824
+sides = 5
+
+[node name="Spacing" type="CSGBox3D" parent="Microwave" unique_id=1550050700]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18449837, -0.029896736, -0.08237353)
+operation = 2
+size = Vector3(1.0440674, 0.18579102, 0.38098145)
+
+[node name="bandera" type="Sprite3D" parent="." unique_id=1712851486]
+transform = Transform3D(0.9906455, -0.1306615, -0.039359253, 0.13011101, 0.9913663, -0.0162483, 0.041142467, 0.010975232, 0.99909294, 0.39700004, -0.11607294, -0.32014826)
+pixel_size = 0.00015
+transparent = false
+texture = ExtResource("7_ntxnn")
+
+[node name="manguera" type="CSGCombiner3D" parent="." unique_id=1803462061]
+transform = Transform3D(0.86125684, -0.5081699, 0, 0.5081699, 0.86125684, 0, 0, 0, 1, 0.66470206, -0.0772219, -0.01080513)
+material_override = SubResource("StandardMaterial3D_bd7xj")
+material_overlay = ExtResource("3_p5fn1")
+
+[node name="torus" type="CSGTorus3D" parent="manguera" unique_id=1034768986]
+transform = Transform3D(0.99438435, -0.105799854, -0.0023715347, 0.1014992, 0.94714105, 0.30433875, -0.029952796, -0.30287045, 0.9525609, 0.007917047, 0.0027323663, 0.033195674)
+inner_radius = 0.17796157
+outer_radius = 0.23579821
+
+[node name="frame" type="CSGBox3D" parent="manguera/torus" unique_id=1004077134]
+transform = Transform3D(0.97865933, 0.0063498933, -0.20539297, 0.006349709, 0.99811065, 0.061113328, 0.2053929, -0.06111321, 0.97676957, -0.24679849, -0.00440675, -0.16774184)
+operation = 2
+size = Vector3(0.33361816, 1, 0.7305298)
+
+[node name="Pico" type="CSGCylinder3D" parent="." unique_id=1338637736]
+transform = Transform3D(-4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0, 1, 0.67746145, -0.10819241, -0.1873839)
+material_overlay = ExtResource("3_p5fn1")
+radius = 0.051757813
+height = 0.08508301
+material = SubResource("StandardMaterial3D_clrxt")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1570579153]
+transform = Transform3D(0.99995476, 0.004369642, -0.008449744, -0.004320507, 0.9999737, 0.0058240206, 0.008474965, -0.0057872464, 0.99994737, -1.0975198, -0.12492003, -0.13755433)
+material_override = ExtResource("2_2gmbm")
+material_overlay = ExtResource("3_p5fn1")
+size = Vector3(1.0330505, 0.027770996, 0.1454773)
+
+[node name="capacitors" type="CSGCylinder3D" parent="." unique_id=206920915]
+transform = Transform3D(0.999992, -0.002963002, -0.0026822179, 0.0035802594, 0.9623813, 0.27167884, 0.0017763497, -0.27168632, 0.9623843, -1.3600843, 0.008598119, -0.17979303)
+material_overlay = ExtResource("3_p5fn1")
+radius = 0.08105469
+height = 0.20222473
+material = SubResource("StandardMaterial3D_eobq3")
+
+[node name="capacitors3" type="CSGCylinder3D" parent="." unique_id=1689635814]
+transform = Transform3D(0.99999714, -0.0023129007, -0.00075077626, 0.002407879, 0.98493403, 0.17291307, 0.00033954642, -0.17291445, 0.9849367, -0.9542216, 0.008745087, -0.17957936)
+material_overlay = ExtResource("3_p5fn1")
+radius = 0.08105469
+height = 0.20222473
+material = SubResource("StandardMaterial3D_eobq3")
+
+[node name="capacitors2" type="CSGCylinder3D" parent="." unique_id=1189947622]
+transform = Transform3D(0.999992, -0.0029630016, -0.002682218, 0.0036952656, 0.94112676, 0.33803457, 0.0015227274, -0.33804196, 0.94112986, -1.1636624, 0.008598119, -0.17979303)
+material_overlay = ExtResource("3_p5fn1")
+radius = 0.08105469
+height = 0.20222473
+material = SubResource("StandardMaterial3D_eobq3")
+
+[node name="capacitors4" type="CSGCylinder3D" parent="." unique_id=122852507]
+transform = Transform3D(0.999997, -0.0023129003, -0.00075077603, 0.0024301228, 0.9616461, 0.27428204, 8.760613e-05, -0.2742831, 0.96164894, -0.75062764, 0.008451151, -0.1800067)
+material_overlay = ExtResource("3_p5fn1")
+radius = 0.08105469
+height = 0.20222473
+material = SubResource("StandardMaterial3D_eobq3")
+
+[node name="plasma" type="CSGTorus3D" parent="." unique_id=1369793073]
+transform = Transform3D(0.04851856, 0.99882233, 0, -0.99882233, 0.04851856, 0, 0, 0, 1, 0.05017805, -0.009527206, 0.12280017)
+material_override = ExtResource("9_ntxnn")
+transparency = 0.57
+cast_shadow = 0
+inner_radius = 0.22004893
+outer_radius = 0.25146207

@@ -96,12 +96,15 @@ func Hit_Scan_damage(Collider, Direction, Position, _damage):
 		Collider.Hit_Successful(_damage, Direction, Position)
 
 
-func Load_Decal(_pos,_normal):
-	if Display_Debug_Decal:
-		var rd = Debug_Bullet.instantiate()
-		var world = get_tree().get_root()
-		world.add_child(rd)
-		rd.global_translate(_pos+(_normal*.01))
+func Load_Decal(_pos, _normal):
+	if not Display_Debug_Decal:
+		return
+	if _normal == null:
+		return
+	var rd = Debug_Bullet.instantiate()
+	var world = get_tree().get_root()
+	world.add_child(rd)
+	rd.global_translate(_pos + (_normal * .01))
 		
 func Launch_Rigid_Body_Projectile(Collision_Data, _projectile, _origin_point):
 	var _Point = Collision_Data[1]
