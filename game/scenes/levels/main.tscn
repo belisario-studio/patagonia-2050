@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://xtlmd1x1rvp5"]
 
 [ext_resource type="PackedScene" uid="uid://bo6viygofawpl" path="res://assets/FPS-Template/Example World/Objects/World/target.tscn" id="1_ykry0"]
-[ext_resource type="PackedScene" uid="uid://b7f8ofl7vsr8h" path="res://scenes/enemies/robot1.tscn" id="10_rssyh"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/robot1.tscn" id="10_rssyh"]
 [ext_resource type="PackedScene" uid="uid://rj3gsir70j4y" path="res://assets/FPS-Factory-Area/Concrete_Pipe_2.tscn" id="11_2xkjh"]
 [ext_resource type="PackedScene" uid="uid://djxralfk11ye6" path="res://assets/FPS-Factory-Area/Fuel_Tank.tscn" id="12_dj21o"]
+[ext_resource type="PackedScene" uid="uid://bs6wsimvn0f2k" path="res://assets/FPS-Warehouse-Environment/Container_04.tscn" id="13_dj21o"]
 [ext_resource type="PackedScene" uid="uid://oc13h3au02ro" path="res://assets/FPS-Template/Player_Controller/player_character.tscn" id="17_sy51j"]
 [ext_resource type="Shader" uid="uid://kfuretb65505" path="res://assets/FPS-Template/Example World/Objects/World/world.tres" id="18_w31o2"]
 [ext_resource type="Texture2D" uid="uid://bkppki07fuifu" path="res://assets/FPS-Template/Example World/Models/Textures/prototype texture/Dark/texture_01.png" id="19_lng3d"]
@@ -30,9 +31,8 @@ glow_enabled = true
 render_priority = 0
 shader = ExtResource("18_w31o2")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c868b"]
-albedo_texture = ExtResource("19_lng3d")
-uv1_triplanar = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ui35"]
+albedo_color = Color(0.008717706, 0.1859693, 0.14880931, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t62yf"]
 albedo_texture = ExtResource("19_lng3d")
@@ -45,6 +45,9 @@ uv1_triplanar = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yv2ts"]
 albedo_texture = ExtResource("19_lng3d")
 uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dj21o"]
+size = Vector3(2.39917, 1, 6.397888)
 
 [node name="World" type="Node3D" unique_id=2024862255 groups=["World"]]
 
@@ -59,6 +62,7 @@ environment = SubResource("Environment_qwr1n")
 
 [node name="Enemy" type="Node3D" parent="." unique_id=1880106425]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.8799, 0, 14.0176)
+visible = false
 
 [node name="Target" parent="Enemy" unique_id=364268002 instance=ExtResource("1_ykry0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.80966, 3.28587, 8.01964)
@@ -165,7 +169,7 @@ material = SubResource("ShaderMaterial_xbow4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17847, 6.80383, 0)
 operation = 2
 size = Vector3(34.2788, 10.8418, 48)
-material = SubResource("StandardMaterial3D_c868b")
+material = SubResource("StandardMaterial3D_6ui35")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="LevelGeometry" unique_id=1860395147]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 2.39544, -15.9147)
@@ -220,24 +224,8 @@ size = Vector3(2, 3.72119, 14)
 material = SubResource("StandardMaterial3D_yv2ts")
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="LevelGeometry" unique_id=314575517]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9315, 2.36819, 18.5854)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4923525, 2.36819, 18.5854)
 size = Vector3(2, 2, 14)
-material = SubResource("StandardMaterial3D_yv2ts")
-
-[node name="CSGBox3D13" type="CSGBox3D" parent="LevelGeometry" unique_id=635998280]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18.9315, 2.36819, 12.5924)
-size = Vector3(2, 2, 14)
-material = SubResource("StandardMaterial3D_yv2ts")
-
-[node name="CSGBox3D15" type="CSGBox3D" parent="LevelGeometry" unique_id=2037489389]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18.9315, 11.6163, 3.32557)
-size = Vector3(9.26416, 0.80957, 14)
-material = SubResource("StandardMaterial3D_yv2ts")
-
-[node name="CSGBox3D14" type="CSGBox3D" parent="LevelGeometry" unique_id=1755009211]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19.0214, 3.44817, 12.557)
-operation = 2
-size = Vector3(2.4917, 2, 9.15033)
 material = SubResource("StandardMaterial3D_yv2ts")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="LevelGeometry" unique_id=786588056]
@@ -245,98 +233,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.2508, 3.22879, -17.4146)
 size = Vector3(2.63867, 3.72119, 14)
 material = SubResource("StandardMaterial3D_yv2ts")
 
-[node name="ShadowLevelGeometry" type="CSGCombiner3D" parent="." unique_id=978811358]
-layers = 524288
-cast_shadow = 3
+[node name="RigidBody3D" type="RigidBody3D" parent="LevelGeometry" unique_id=2005539434]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="ShadowLevelGeometry" unique_id=497223280]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 5.86237, 0)
-size = Vector3(36, 12.7247, 50)
-material = SubResource("ShaderMaterial_xbow4")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="ShadowLevelGeometry" unique_id=1249893392]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17847, 6.80383, 0)
-operation = 2
-size = Vector3(34.2788, 10.8418, 48)
-material = SubResource("StandardMaterial3D_c868b")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="ShadowLevelGeometry" unique_id=137816964]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 2.39544, -15.9147)
-size = Vector3(11, 5.40485, 17)
-material = SubResource("StandardMaterial3D_t62yf")
-
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="ShadowLevelGeometry" unique_id=400064827]
-transform = Transform3D(-4.37114e-08, 0, 3.97416, 0, 1, 0, -1, 0, -1.73716e-07, -0.0259876, 1.31426, -2.51557)
-polygon = PackedVector2Array(0, 0, 0, 0, 1.25373, 1.03499, 4.24766, 3.22178, 4.91613, 3.80578, 5, 0, 1, 0)
-depth = 2.54
-material = SubResource("StandardMaterial3D_ov6po")
-
-[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="ShadowLevelGeometry" unique_id=250587106]
-transform = Transform3D(-4.37114e-08, 0, 3.97416, 0, 1, 0, -1, 0, -1.73716e-07, 24.4923, 1.31426, -5.5095)
-polygon = PackedVector2Array(0, 0, 0, 0, 1.25373, 1.03499, 4.24766, 3.22178, 4.91613, 3.80578, 5, 0, 1, 0)
-depth = 0.65
-material = SubResource("StandardMaterial3D_ov6po")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="ShadowLevelGeometry" unique_id=1249947020]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.931463, 1.86819, -7.91462)
-size = Vector3(2, 1, 1)
-material = SubResource("StandardMaterial3D_yv2ts")
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="ShadowLevelGeometry" unique_id=312858858]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.931463, 2.36819, -8.91462)
-size = Vector3(2, 2, 1)
-material = SubResource("StandardMaterial3D_yv2ts")
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="ShadowLevelGeometry" unique_id=195908070]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.931463, 2.86819, -9.91462)
-size = Vector3(2, 3, 1)
-material = SubResource("StandardMaterial3D_yv2ts")
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="ShadowLevelGeometry" unique_id=1891312107]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.931463, 3.22879, -17.4146)
-size = Vector3(2, 3.72119, 14)
-material = SubResource("StandardMaterial3D_yv2ts")
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="ShadowLevelGeometry" unique_id=2077244416]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.93146, 3.22879, -17.4146)
-size = Vector3(2, 3.72119, 14)
-material = SubResource("StandardMaterial3D_yv2ts")
-
-[node name="CSGBox3D9" type="CSGBox3D" parent="ShadowLevelGeometry" unique_id=1053583177]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.93146, 3.22879, -17.4146)
-size = Vector3(2, 3.72119, 14)
-material = SubResource("StandardMaterial3D_yv2ts")
-
-[node name="CSGBox3D10" type="CSGBox3D" parent="ShadowLevelGeometry" unique_id=2050049052]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9315, 3.22879, -17.4146)
-size = Vector3(2, 3.72119, 14)
-material = SubResource("StandardMaterial3D_yv2ts")
-
-[node name="CSGBox3D12" type="CSGBox3D" parent="ShadowLevelGeometry" unique_id=981011968]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9315, 2.36819, 18.5854)
-size = Vector3(2, 2, 14)
-material = SubResource("StandardMaterial3D_yv2ts")
-
-[node name="CSGBox3D13" type="CSGBox3D" parent="ShadowLevelGeometry" unique_id=1652881862]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18.9315, 2.36819, 12.5924)
-size = Vector3(2, 2, 14)
-material = SubResource("StandardMaterial3D_yv2ts")
-
-[node name="CSGBox3D15" type="CSGBox3D" parent="ShadowLevelGeometry" unique_id=1762225633]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18.9315, 11.6163, 3.32557)
-size = Vector3(9.26416, 0.80957, 14)
-material = SubResource("StandardMaterial3D_yv2ts")
-
-[node name="CSGBox3D14" type="CSGBox3D" parent="ShadowLevelGeometry" unique_id=1910577577]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19.0214, 3.44817, 12.557)
-operation = 2
-size = Vector3(2.4917, 2, 9.15033)
-material = SubResource("StandardMaterial3D_yv2ts")
-
-[node name="CSGBox3D11" type="CSGBox3D" parent="ShadowLevelGeometry" unique_id=601156347]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.2508, 3.22879, -17.4146)
-size = Vector3(2.63867, 3.72119, 14)
-material = SubResource("StandardMaterial3D_yv2ts")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGeometry/RigidBody3D" unique_id=1117972315]
+transform = Transform3D(1, 0, 0, 0, 0.8273257, 0.5617224, 0, -0.5617224, 0.8273257, -4.0010986, 1.1547074, 3.5222616)
+shape = SubResource("BoxShape3D_dj21o")
 
 [node name="physics_objects" type="Node3D" parent="." unique_id=2036821081]
 
@@ -379,7 +280,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1989, 3.06818, 19.9151)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7771063, 1.382927, 8.9146185)
 
 [node name="Bridge2" parent="." unique_id=301458086 instance=ExtResource("22_ykry0")]
-transform = Transform3D(0.17364822, 0, -0.9848077, 0, 1, 0, 0.9848077, 0, 0.17364822, -0.39474916, 2.3802052, 10.45775)
+transform = Transform3D(0.04105611, 0, -0.99915695, 0.026416369, 0.9996504, 0.0010854685, 0.99880767, -0.026438657, 0.041041758, -3.4940414, 1.4018917, 17.28226)
 
 [node name="Concrete_Tank_12" parent="." unique_id=22883854 instance=ExtResource("23_im81g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7953987, 1.382927, -6.260466)
@@ -391,7 +292,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.524193, 1.4035052, 4.712656
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4790106, 2.0429277, 1.1373467)
 
 [node name="Enemy5" parent="." unique_id=2005087216 instance=ExtResource("10_rssyh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4567809, 5.3339853, 8.350264)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2862153, 3.9050064, 8.350264)
 
 [node name="Enemy2" parent="." unique_id=1868617762 instance=ExtResource("10_rssyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.674518, 2.0429287, 22.75727)
@@ -403,4 +304,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.446114, 1.382927, 12.004405
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.26025, 1.3829232, -3.2036133)
 
 [node name="Fuel_Tank2" parent="." unique_id=1041821283 instance=ExtResource("12_dj21o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.50786, 2.423365, 16.400988)
+transform = Transform3D(0.9424724, 0, -0.33428392, 0, 1, 0, 0.33428392, 0, 0.9424724, 8.477055, 2.423365, 15.804802)
+
+[node name="Container_042" parent="." unique_id=1342314486 instance=ExtResource("13_dj21o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.176264, 1.3829288, 14.555856)
+
+[node name="Container_043" parent="." unique_id=1238377060 instance=ExtResource("13_dj21o")]
+transform = Transform3D(0.9617461, 0, 0.27394244, 0, 1, 0, -0.27394244, 0, 0.9617461, 22.176264, 4.189702, 14.555856)

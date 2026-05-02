@@ -708,41 +708,6 @@ mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="debug_hud" type="VBoxContainer" parent="CanvasLayer" unique_id=1273329344]
-anchors_preset = 9
-anchor_bottom = 1.0
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/debug_hud" unique_id=1270679337]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/debug_hud/HBoxContainer" unique_id=511066385]
-layout_mode = 2
-text = "Current Weapon: "
-
-[node name="CurrentWeapon" type="Label" parent="CanvasLayer/debug_hud/HBoxContainer" unique_id=1914307984]
-layout_mode = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/debug_hud" unique_id=719618350]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/debug_hud/HBoxContainer2" unique_id=2111135313]
-layout_mode = 2
-text = "Ammo:"
-
-[node name="CurrentAmmo" type="Label" parent="CanvasLayer/debug_hud/HBoxContainer2" unique_id=1310381806]
-layout_mode = 2
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/debug_hud" unique_id=26783440]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/debug_hud/HBoxContainer3" unique_id=720441406]
-layout_mode = 2
-text = "Weapon Stack:"
-
-[node name="WeaponStack" type="Label" parent="CanvasLayer/debug_hud/HBoxContainer3" unique_id=146785852]
-layout_mode = 2
-
 [node name="SprintBar" type="HSlider" parent="CanvasLayer" unique_id=1987921148]
 anchors_preset = 7
 anchor_left = 0.5
